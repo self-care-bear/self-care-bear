@@ -1,11 +1,8 @@
-//add custom task
+import { client, parseData } from './client';
+export async function getPresetTasks() {
+  const request = await client.from('preset_tasks').select('*');
+  return parseData(request);
+}
 
-//get custom tasks
-
-//delete custom tasks
-
-//edit custom tasks
-
-//get preset tasks
 
 //create tasklist array
