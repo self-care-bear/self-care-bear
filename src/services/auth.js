@@ -1,9 +1,19 @@
 import { client, parseData } from './client';
 
-export function getUser() {}
+export function getUser() {
+  return client.auth.user();
+}
 
-export async function signUpUser(email, password) {}
+export async function signUpUser(email, password) {
+  const request = await client.auth.signUp({ email, password });
+  return parseData(request);
+}
 
-export async function signInUser(email, password) {}
+export async function signInUser(email, password) {
+  const request = await client.auth.signIn({ email, password });
+  return parseData(request);
+}
 
-export async function signOutUser() {}
+export async function signOutUser() {
+  return client.auth.signOut();
+}

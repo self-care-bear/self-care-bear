@@ -1,10 +1,12 @@
 import './App.css'; /* Global CSS */
 import styles from './App.module.css'; /* CSS Modules */
+import Profile from './views/Profile/Profile';
 
 export default function App() {
   return (
-    <h1
-      className={`
+    <>
+      <h1
+        className={`
       bg-green-400
         text-3xl
         text-center
@@ -16,8 +18,10 @@ export default function App() {
         mt-10
         ${styles.myCustomCssClass}
       `}
-    >
-      Hello, World!
-    </h1>
+      >
+        Hello, World!
+      </h1>
+      <Profile />
+    </>
   );
 }
