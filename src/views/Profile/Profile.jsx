@@ -10,5 +10,6 @@ export default function Profile() {
     };
     fetchData();
   }, []);
+
   return <div>Profile</div>;
 }
