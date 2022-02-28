@@ -1,6 +1,7 @@
 import './App.css'; /* Global CSS */
 import styles from './App.module.css'; /* CSS Modules */
 import Profile from './views/Profile/Profile';
+import Auth from './views/Auth/Auth';
 
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
         Hello, World!
       </h1>
       <Profile />
+      <Auth isSigningUp={true} />
     </>
   );
 }
