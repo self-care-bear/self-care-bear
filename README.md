@@ -1,4 +1,4 @@
-# adv-react-tailwind-template!
+# adv-react-tailwind-template!!
 
 This template is a modified version of our [React
 Template](https://github.com/alchemycodelab/react-template). It provides a way
