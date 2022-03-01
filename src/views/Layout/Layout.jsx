@@ -1,11 +1,12 @@
-import React from 'react';
+import Header from './Header/Header';
+import Footer from './Footer/Footer';
 
 export default function Layout({ children }) {
   return (
-    <div>
-      {/* // header */}
+    <div className="Layout">
+      <Header />
       <main>{children}</main>
-      {/* // footer */}
+      <Footer />
     </div>
   );
 }

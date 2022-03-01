@@ -6,6 +6,8 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Layout from './views/Layout/Layout';
 import Home from './views/Home/Home';
 import About from './views/About/About';
+import TaskSelector from './views/Task/TaskSelector';
+
 export default function App() {
   return (
     <>
@@ -24,7 +26,9 @@ export default function App() {
             <Route exact path="/profile/create">
               {/* need to make */}
             </Route>
-            <Route path="/profile/tasks">{/* need to make */}</Route>
+            <Route path="/profile/tasks">
+              <TaskSelector />
+            </Route>
             <Route path="/profile/tasks/:id">{/* need to make */}</Route>
             <Route path="/profile/tasks/:id/edit">{/* need to make */}</Route>
             <Route exact path="/profile">
@@ -37,22 +41,7 @@ export default function App() {
           </Switch>
         </Layout>
       </BrowserRouter>
-      <h1
-        className={`
-      bg-green-400
-        text-3xl
-        text-center
-      text-white
-        font-bold
-        p-10
-        w-1/2
-        mx-auto
-        mt-10
-        ${styles.myCustomCssClass}
-      `}
-      >
-        Hello, World!
-      </h1>
+      <h1>Hello, World!</h1>
     </>
   );
 }
