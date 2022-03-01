@@ -15,10 +15,10 @@ export default function App() {
             <Route exact path="/">
               <Home />
             </Route>
-            <Route path="/signup">
+            <Route exact path="/signup">
               <Auth isSigningUp />
             </Route>
-            <Route path="/signin">
+            <Route exact path="/signin">
               <Auth />
             </Route>
             <Route exact path="/profile/create">

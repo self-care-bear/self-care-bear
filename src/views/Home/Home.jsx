@@ -1,5 +1,13 @@
-import React from 'react';
+import { getCreatedTasks } from '../../services/tasks';
+import { useEffect } from 'react';
 
 export default function Home() {
-  return <div>Home</div>;
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getCreatedTasks();
+      console.log(data);
+    };
+    fetchData();
+  }, []);
+  return <div></div>;
 }
