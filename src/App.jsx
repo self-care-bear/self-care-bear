@@ -6,53 +6,47 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Layout from './views/Layout/Layout';
 import Home from './views/Home/Home';
 import About from './views/About/About';
+import TaskSelector from './views/Tasks/TaskSelector';
+import CreateProfile from './views/Profile/CreateProfile';
+import Completed from './views/Completed/Completed';
+
 export default function App() {
   return (
-    <>
+    <div className="App">
       <BrowserRouter>
         <Layout>
           <Switch>
             <Route exact path="/">
               <Home />
             </Route>
-            <Route path="/signup">
+            <Route exact path="/signup">
               <Auth isSigningUp />
             </Route>
-            <Route path="/signin">
+            <Route exact path="/signin">
               <Auth />
             </Route>
             <Route exact path="/profile/create">
-              {/* need to make */}
+              <CreateProfile />
             </Route>
-            <Route path="/profile/tasks">{/* need to make */}</Route>
-            <Route path="/profile/tasks/:id">{/* need to make */}</Route>
-            <Route path="/profile/tasks/:id/edit">{/* need to make */}</Route>
+            <Route path="/profile/tasks">
+              <TaskSelector />
+            </Route>
+            <Route path="/profile/tasks/:id">{/* <TaskDetail /> */}</Route>
+            <Route path="/profile/tasks/:id/edit">
+              {/* <TaskDetail isEditing /> */}
+            </Route>
             <Route exact path="/profile">
               <Profile />
             </Route>
-            <Route path="/profile/completed">{/* need to make */}</Route>
+            <Route path="/profile/completed">
+              <Completed />
+            </Route>
             <Route path="/about">
               <About />
             </Route>
           </Switch>
         </Layout>
       </BrowserRouter>
-      <h1
-        className={`
-      bg-green-400
-        text-3xl
-        text-center
-      text-white
-        font-bold
-        p-10
-        w-1/2
-        mx-auto
-        mt-10
-        ${styles.myCustomCssClass}
-      `}
-      >
-        Hello, World!
-      </h1>
-    </>
+    </div>
   );
 }
