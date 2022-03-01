@@ -5,7 +5,10 @@ export async function getPresetTasks() {
   return parseData(request);
 }
 
-export async function getCreatedTasks() {
-  const request = await client.from('created_tasks').select('*');
+export async function getCreatedTasks(user_id) {
+  const request = await client
+    .from('created_tasks')
+    .select('*')
+    .match({ user_id });
   return parseData(request);
 }

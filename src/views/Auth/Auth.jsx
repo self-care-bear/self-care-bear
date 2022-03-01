@@ -1,21 +1,23 @@
-// import { useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useState } from 'react';
 import { signInUser, signUpUser } from '../../services/auth';
+import { useUser } from '../../context/UserContext';
 
 export default function Auth({ isSigningUp = false }) {
-  const [user, setUser] = useState({});
+  const { setUser } = useUser();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  // const history = useHistory();
+  const history = useHistory();
+
   const handleAuth = async (e) => {
     e.preventDefault();
     try {
       if (isSigningUp) {
         await signUpUser(email, password);
-        // console.log(signUpUser);
       } else {
         const response = await signInUser(email, password);
         setUser({ id: response.id, email: response.email });
+        history.replace('/');
       }
     } catch (error) {
       throw error;
