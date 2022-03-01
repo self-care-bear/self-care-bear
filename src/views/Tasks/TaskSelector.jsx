@@ -1,7 +1,9 @@
 import { getCreatedTasks, getPresetTasks } from '../../services/tasks';
 import { useEffect, useState } from 'react';
 import { useUser } from '../../context/UserContext';
+import TaskCard from '../../components/TaskCard/TaskCard';
 import { v4 as uuid } from 'uuid';
+import './Tasks.css';
 
 export default function TaskSelector() {
   const { user } = useUser();
@@ -25,9 +27,9 @@ export default function TaskSelector() {
   if (loading) return <span>Loading...</span>;
 
   return (
-    <div>
+    <div className="card-container">
       {taskList.map((task) => {
-        return <p key={uuid()}>{task.task}</p>;
+        return <TaskCard key={uuid()} task={task} />;
       })}
     </div>
   );
