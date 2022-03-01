@@ -12,5 +12,5 @@ test('there is a home page', () => {
     </MemoryRouter>
   );
 
-  screen.getByText(/hello, world!/i);
+  screen.getByText(/Self Care Bear/i);
 });
