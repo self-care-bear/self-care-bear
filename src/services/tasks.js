@@ -13,6 +13,16 @@ export async function getCreatedTasks(user_id) {
   return parseData(request);
 }
 
-//add task
-//update task
+export async function createTask(task, task_description) {
+  const request = await client.from('created_tasks').insert([
+    {
+      task: task,
+      task_description: task_description,
+      user_id: client.auth.user().id,
+    },
+  ]);
+  return parseData(request);
+}
+
+export async function updateTask(task, task_description) {}
 //delete task
