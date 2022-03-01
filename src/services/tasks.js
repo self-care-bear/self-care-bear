@@ -24,7 +24,7 @@ export async function createTask(task, task_description) {
   return parseData(request);
 }
 
-export async function updateTask(task, task_description) {
+export async function updateTask(task, task_description, user_id) {
   const request = await client
     .from('created_tasks')
     .update({ task, task_description })
