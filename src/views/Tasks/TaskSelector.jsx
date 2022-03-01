@@ -1,4 +1,8 @@
-import { getCreatedTasks, getPresetTasks } from '../../services/tasks';
+import {
+  getCreatedTasks,
+  getPresetTasks,
+  createTask,
+} from '../../services/tasks';
 import { useEffect, useState } from 'react';
 import { useUser } from '../../context/UserContext';
 import TaskCard from '../../components/TaskCard/TaskCard';
@@ -9,6 +13,8 @@ export default function TaskSelector() {
   const { user } = useUser();
   const [loading, setLoading] = useState(true);
   const [taskList, setTaskList] = useState([]);
+  const [newTask, setNewTask] = useState('');
+  const [newTaskDesc, setNewTaskDesc] = useState('');
 
   useEffect(() => {
     const fetchCreatedData = async () => {
@@ -24,6 +30,11 @@ export default function TaskSelector() {
     fetchPresetData();
   }, []);
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    createTask(newTask, newTaskDesc);
+  };
+
   if (loading) return <span>Loading...</span>;
 
   return (
@@ -31,6 +42,21 @@ export default function TaskSelector() {
       {taskList.map((task) => {
         return <TaskCard key={uuid()} task={task} />;
       })}
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          value={newTask}
+          placeholder="task"
+          onChange={(e) => setNewTask(e.target.value)}
+        />
+        <input
+          type="text"
+          value={newTaskDesc}
+          onChange={(e) => setNewTaskDesc(e.target.value)}
+          placeholder="description"
+        />
+        <button type="submit">submit</button>
+      </form>
     </div>
   );
 }
