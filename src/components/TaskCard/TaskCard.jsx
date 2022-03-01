@@ -9,7 +9,7 @@ export default function TaskCard({ task }) {
   return (
     <div className="task-card">
       <p>{task.task}</p>
-      <button onClick={handleDelete}>delete</button>
+      <button onClick={handleDelete}>delete task</button>
     </div>
   );
 }
