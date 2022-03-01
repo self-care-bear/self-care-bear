@@ -4,3 +4,14 @@
 /* body {
   @apply bg-slate-800;
 } */
+
+body {
+  margin: 0;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.App {
+  display: flex;
+  margin: auto;
+  justify-content: center;
+}
