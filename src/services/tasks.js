@@ -25,4 +25,8 @@ export async function createTask(task, task_description) {
 }
 
 export async function updateTask(task, task_description) {}
-//delete task
+
+export async function deleteTask(id) {
+  const request = await client.from('created_tasks').delete().match({ id });
+  return parseData(request);
+}
