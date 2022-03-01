@@ -13,7 +13,7 @@ import Completed from './views/Completed/Completed';
 
 export default function App() {
   return (
-    <>
+    <div className="App">
       <BrowserRouter>
         <Layout>
           <Switch>
@@ -50,7 +50,6 @@ export default function App() {
           </Switch>
         </Layout>
       </BrowserRouter>
-      <h1>Hello, World!</h1>
-    </>
+    </div>
   );
 }

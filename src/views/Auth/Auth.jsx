@@ -14,17 +14,18 @@ export default function Auth({ isSigningUp = false }) {
     try {
       if (isSigningUp) {
         await signUpUser(email, password);
+        history.replace('/profile');
       } else {
         const response = await signInUser(email, password);
         setUser({ id: response.id, email: response.email });
-        history.replace('/');
+        history.replace('/profile');
       }
     } catch (error) {
       throw error;
     }
   };
   return (
-    <div>
+    <div className="auth-container">
       <h4>
         {isSigningUp
           ? 'Welcome! Create an account.'
