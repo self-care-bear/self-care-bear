@@ -10,10 +10,16 @@ export async function getProfileById(id) {
   return parseData(request);
 }
 
-export async function createProfile({ user_name, bear, task_list, user_id }) {
+export async function createProfile({
+  user_name,
+  bear,
+  task_list,
+  user_id,
+  textarray,
+}) {
   const request = await client
     .from('profile')
-    .insert({ user_name, bear, task_list, user_id });
+    .insert({ user_name, bear, task_list, user_id, textarray });
   return parseData(request);
 }
 
