@@ -78,7 +78,7 @@ export default function TaskSelector() {
           );
         })}
         {selectedTasks.map((task) => {
-          return <p key={task.id}>{task.task}</p>;
+          return <p key={uuid()}>{task.task}</p>;
         })}
       </div>
     </div>

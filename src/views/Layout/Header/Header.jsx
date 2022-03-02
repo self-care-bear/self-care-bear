@@ -13,8 +13,12 @@ export default function Header() {
   return (
     <header>
       <h1>Self Care Bear</h1>
-      <h2>You're signed in as {user.email}</h2>
-      <button onClick={handleLogout}>log out</button>
+      {user.email && (
+        <div className="header-controls">
+          <span>You're signed in as {user.email}</span>
+          <button onClick={handleLogout}>log out</button>
+        </div>
+      )}
     </header>
   );
 }
