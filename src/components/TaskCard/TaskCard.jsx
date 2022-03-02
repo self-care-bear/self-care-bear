@@ -3,13 +3,15 @@ import { useUser } from '../../context/UserContext';
 import { deleteTask, updateTask } from '../../services/tasks';
 import './TaskCard.css';
 
-export default function TaskCard({ task }) {
+export default function TaskCard({ task, setTaskList }) {
   const { user } = useUser();
   const [isExpanded, setIsExpanded] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [editTask, setEditTask] = useState(task);
+
   const handleDelete = () => {
     deleteTask(task.id);
+    setTaskList((prevState) => prevState.filter((item) => item.id !== task.id));
   };
 
   const handleExpand = () => {
