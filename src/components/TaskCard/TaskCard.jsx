@@ -3,7 +3,12 @@ import { useUser } from '../../context/UserContext';
 import { deleteTask, updateTask } from '../../services/tasks';
 import './TaskCard.css';
 
-export default function TaskCard({ task, taskList, setTaskList }) {
+export default function TaskCard({
+  task,
+  taskList,
+  setTaskList,
+  setSelectedTasks,
+}) {
   const { user } = useUser();
   const [isExpanded, setIsExpanded] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
@@ -34,10 +39,13 @@ export default function TaskCard({ task, taskList, setTaskList }) {
     // setTaskList(updatedTaskList);
     setIsEditing(false);
   };
-
+  const handleSelect = () => {
+    setSelectedTasks((prevState) => [...prevState, task]);
+  };
   return (
     <div className="task-card" onClick={handleExpand}>
       <h3>{task.task}</h3>
+      <button onClick={handleSelect}>Add Task</button>
       {isExpanded && !isEditing && (
         <>
           <p>{task.task_description}</p>
