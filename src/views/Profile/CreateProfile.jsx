@@ -32,6 +32,7 @@ export default function CreateProfile() {
       task_list: '',
     });
     setProfile(response);
+    history.replace('/profile');
   };
   return (
     <div className="create-container">

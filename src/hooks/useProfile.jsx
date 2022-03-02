@@ -5,7 +5,7 @@ import { useUser } from '../context/UserContext';
 
 export const useProfile = () => {
   const { user } = useUser();
-  console.log('user', user);
+
   const [loading, setLoading] = useState(true);
   const [profile, setProfile] = useState({
     user_name: '',
@@ -18,7 +18,7 @@ export const useProfile = () => {
     const fetchProfile = async () => {
       try {
         const response = await getProfileById(user.id);
-        console.log('response', response);
+
         setProfile(response);
       } catch (error) {
         console.log('error', error);
