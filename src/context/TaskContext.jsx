@@ -26,9 +26,9 @@ const TaskProvider = ({ children }) => {
   const [taskList, setTaskList] = useState(initialTasks);
   const [selectedTasks, setSelectedTasks] = useState([]);
 
-  useEffect(() => {
-    console.log('taskList', taskList);
-  });
+  //   useEffect(() => {
+  //     console.log('taskList', taskList);
+  //   });
 
   const value = { taskList, setTaskList, selectedTasks, setSelectedTasks };
 

@@ -28,7 +28,7 @@ export default function TaskSelector() {
   //   ];
   const [loading, setLoading] = useState(true);
   //   const [taskList, setTaskList] = useState(initialTasks);
-  const { taskList, setTaskList } = useTasks();
+  const { taskList, setTaskList } = useTasks([]);
   const [newTask, setNewTask] = useState('');
   const [newTaskDesc, setNewTaskDesc] = useState('');
   //   const [selectedTasks, setSelectedTasks] = useState([]);
@@ -92,15 +92,7 @@ export default function TaskSelector() {
       </form>
       <div className="card-container">
         {taskList.map((task) => {
-          return (
-            <TaskCard
-              key={uuid()}
-              task={task}
-              //   taskList={taskList}
-              //   setTaskList={setTaskList}
-              //   setSelectedTasks={setSelectedTasks}
-            />
-          );
+          return <TaskCard key={uuid()} task={task} />;
         })}
       </div>
       {selectedTasks &&

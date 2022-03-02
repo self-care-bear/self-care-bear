@@ -8,25 +8,26 @@ import { useTasks } from '../../context/TaskContext';
 
 export default function Profile() {
   const { user } = useUser();
-  const { selectedTasks } = useTasks();
-  const { profile, setProfile, loading } = useProfile();
-  // useEffect(async () => {
+  const { profile, loading } = useProfile();
+
+  console.log('profile', profile);
+
+  //   useEffect(async () => {
   //   try {
   //     const response = await getProfileById(user.id);
   //     setProfile(response);
   //   } catch (error) {
   //     <CreateProfile />;
   //   }
-  // }, []);
+  //   }, []);
+
   if (loading) return <p>loading...</p>;
 
   if (!loading && !profile.user_name) return <Redirect to="/profile/create" />;
   return (
     <div>
       <h2>Profile</h2>
-      {selectedTasks.map((item) => {
-        return <p>{item.task}</p>;
-      })}
+      {profile.task_list}
     </div>
   );
 }

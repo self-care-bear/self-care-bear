@@ -3,13 +3,16 @@ import { useUser } from '../../context/UserContext';
 import { deleteTask, updateTask } from '../../services/tasks';
 import './TaskCard.css';
 import { useTasks } from '../../context/TaskContext';
+import { useProfile } from '../../hooks/useProfile';
+import { updateProfile } from '../../services/profiles';
 
 export default function TaskCard({ task }) {
   const { user } = useUser();
+  const { profile, setProfile } = useProfile();
   const [isExpanded, setIsExpanded] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [editTask, setEditTask] = useState(task);
-  const { taskList, setTaskList, setSelectedTasks } = useTasks();
+  const { taskList, setTaskList, selectedTasks, setSelectedTasks } = useTasks();
 
   const handleDelete = () => {
     deleteTask(task.id);
@@ -37,8 +40,17 @@ export default function TaskCard({ task }) {
     setIsEditing(false);
   };
 
-  const handleSelect = () => {
+  const handleSelect = async () => {
     setSelectedTasks((prevState) => [...prevState, task]);
+    console.log('selectedTasks', selectedTasks);
+    const response = await updateProfile({
+      user_id: user.id,
+      user_name: profile.name,
+      bear: profile.bear,
+      task_list: [...selectedTasks],
+    });
+    console.log('response', response);
+    setProfile(response);
   };
 
   return (
