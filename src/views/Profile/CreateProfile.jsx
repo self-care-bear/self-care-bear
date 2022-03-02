@@ -39,6 +39,7 @@ export default function CreateProfile() {
       task_list: [],
       textarray: [],
     });
+    console.log('response', response);
     setProfile(response);
     history.replace('/profile');
   };

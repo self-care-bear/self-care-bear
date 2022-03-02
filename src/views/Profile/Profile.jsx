@@ -6,10 +6,16 @@ import CreateProfile from './CreateProfile';
 import { useTasks } from '../../context/TaskContext';
 import { createContext, useContext, useEffect, useState } from 'react';
 import { v4 as uuid } from 'uuid';
-import { getSelectedTasks } from '../../services/tasks';
+import {
+  getSelectedTasks,
+  getCompletedTasks,
+  updateTask,
+} from '../../services/tasks';
 
 export default function Profile() {
   const [selectedTasks, setSelectedTasks] = useState([]);
+  const [completedTasks, setCompletedTasks] = useState([]);
+  const [isCompleted, setIsCompleted] = useState(false);
   const { user } = useUser();
   const { profile, loading } = useProfile();
 
@@ -18,11 +24,32 @@ export default function Profile() {
   useEffect(() => {
     const fetchSelectedTasks = async () => {
       const data = await getSelectedTasks(user.id);
-      console.log('data', data);
+      // console.log('data', data);
       setSelectedTasks(data);
     };
     fetchSelectedTasks();
   }, []);
+
+  useEffect(() => {
+    const fetchCompletedTasks = async () => {
+      const data = await getCompletedTasks(user.id);
+      console.log('data', data);
+      setCompletedTasks(data);
+    };
+    fetchCompletedTasks();
+  }, []);
+
+  const handleToggle = async (task) => {
+    setIsCompleted(!isCompleted);
+    await updateTask(
+      task.id,
+      task.task,
+      task.task_description,
+      user.id,
+      true,
+      !isCompleted
+    );
+  };
 
   if (loading) return <p>loading...</p>;
 
@@ -35,7 +62,11 @@ export default function Profile() {
         {selectedTasks.map((task) => {
           return (
             <li className="profile-tasks_item" key={uuid()}>
-              <input type="checkbox" />
+              <input
+                type="checkbox"
+                checked={task.is_completed}
+                onChange={() => handleToggle(task)}
+              />
               <p>{task.task}</p>
             </li>
           );
