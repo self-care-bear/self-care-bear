@@ -5,31 +5,34 @@ import TaskCard from '../../components/TaskCard/TaskCard';
 import { v4 as uuid } from 'uuid';
 import './Tasks.css';
 import { useHistory } from 'react-router-dom';
+import { useTasks } from '../../context/TaskContext';
 
 export default function TaskSelector() {
   const { user } = useUser();
-  const initialTasks = [
-    {
-      task_id: uuid(),
-      task: 'Stretch',
-      task_description: 'Do a yoga practice!',
-    },
-    {
-      task_id: uuid(),
-      task: 'Eat a vegebil',
-      task_description: 'Eat a carrot!',
-    },
-    {
-      task_id: uuid(),
-      task: 'Pet your cat',
-      task_description: 'And kiss it, too!',
-    },
-  ];
+  //   const initialTasks = [
+  //     {
+  //       task_id: uuid(),
+  //       task: 'Stretch',
+  //       task_description: 'Do a yoga practice!',
+  //     },
+  //     {
+  //       task_id: uuid(),
+  //       task: 'Eat a vegebil',
+  //       task_description: 'Eat a carrot!',
+  //     },
+  //     {
+  //       task_id: uuid(),
+  //       task: 'Pet your cat',
+  //       task_description: 'And kiss it, too!',
+  //     },
+  //   ];
   const [loading, setLoading] = useState(true);
-  const [taskList, setTaskList] = useState(initialTasks);
+  //   const [taskList, setTaskList] = useState(initialTasks);
+  const { taskList, setTaskList } = useTasks();
   const [newTask, setNewTask] = useState('');
   const [newTaskDesc, setNewTaskDesc] = useState('');
-  const [selectedTasks, setSelectedTasks] = useState([]);
+  //   const [selectedTasks, setSelectedTasks] = useState([]);
+  const { selectedTasks, setSelectedTasks } = useTasks();
   const history = useHistory();
 
   useEffect(() => {
@@ -58,11 +61,11 @@ export default function TaskSelector() {
 
   if (loading) return <span>Loading...</span>;
 
-  if (selectedTasks.length === 5) {
-    setTimeout(() => {
-      history.push('/profile');
-    }, 1000);
-  }
+  //   if (selectedTasks.length === 5) {
+  //     setTimeout(() => {
+  //       history.push('/profile');
+  //     }, 1000);
+  //   }
 
   return (
     <div className="task-selector">
@@ -93,16 +96,17 @@ export default function TaskSelector() {
             <TaskCard
               key={uuid()}
               task={task}
-              taskList={taskList}
-              setTaskList={setTaskList}
-              setSelectedTasks={setSelectedTasks}
+              //   taskList={taskList}
+              //   setTaskList={setTaskList}
+              //   setSelectedTasks={setSelectedTasks}
             />
           );
         })}
       </div>
-      {selectedTasks.map((task) => {
-        return <p key={uuid()}>{task.task}</p>;
-      })}
+      {selectedTasks &&
+        selectedTasks.map((task) => {
+          return <p key={uuid()}>{task.task}</p>;
+        })}
     </div>
   );
 }

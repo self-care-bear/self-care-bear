@@ -2,17 +2,14 @@ import { useState } from 'react';
 import { useUser } from '../../context/UserContext';
 import { deleteTask, updateTask } from '../../services/tasks';
 import './TaskCard.css';
+import { useTasks } from '../../context/TaskContext';
 
-export default function TaskCard({
-  task,
-  taskList,
-  setTaskList,
-  setSelectedTasks,
-}) {
+export default function TaskCard({ task }) {
   const { user } = useUser();
   const [isExpanded, setIsExpanded] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [editTask, setEditTask] = useState(task);
+  const { taskList, setTaskList, setSelectedTasks } = useTasks();
 
   const handleDelete = () => {
     deleteTask(task.id);
