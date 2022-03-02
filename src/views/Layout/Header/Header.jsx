@@ -5,11 +5,13 @@ import './Header.css';
 
 export default function Header() {
   const history = useHistory();
-  const { user } = useUser();
+  const { user, setUser } = useUser();
   const handleLogout = () => {
     signOutUser();
+    setUser({});
     history.replace('/');
   };
+
   return (
     <header>
       <h1>Self Care Bear</h1>
