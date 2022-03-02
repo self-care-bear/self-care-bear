@@ -26,7 +26,7 @@ export default function TaskCard({ task }) {
 
   const handleUpdate = async (e) => {
     e.preventDefault();
-    updateTask(editTask.task, editTask.task_description, user.id);
+    updateTask(editTask.id, editTask.task, editTask.task_description, user.id);
     const updatedTaskList = taskList.map((item) => {
       item.id === editTask.id
         ? {
@@ -42,7 +42,7 @@ export default function TaskCard({ task }) {
   };
 
   const handleSelect = async () => {
-    await updateTask(task.task, task.task_description, user.id, true);
+    await updateTask(task.id, task.task, task.task_description, user.id, true);
   };
 
   return (

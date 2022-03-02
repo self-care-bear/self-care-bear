@@ -23,11 +23,17 @@ export async function createTask(task, task_description) {
   ]);
   return parseData(request);
 }
-export async function updateTask(task, task_description, user_id, is_selected) {
+export async function updateTask(
+  id,
+  task,
+  task_description,
+  user_id,
+  is_selected
+) {
   const request = await client
     .from('created_tasks')
     .update({ task, task_description, is_selected })
-    .match({ user_id });
+    .match({ id, user_id });
   return parseData(request);
 }
 
@@ -38,8 +44,23 @@ export async function deleteTask(id) {
 
 export async function getSelectedTasks(user_id) {
   const request = await client
-    .from('selected_tasks')
+    .from('created_tasks')
     .select('*')
-    .match({ user_id });
+    .match({ user_id, is_selected: true });
   return parseData(request);
 }
+
+// const { data, error } = await supabase
+//   .from('cities')
+//   .select('name, country_id')
+//   .match({name: 'Beijing', country_id: 156})
+
+// go into created tasks
+// find selected 'true'
+// match by user_id
+// return those
+
+// const { data, error } = await supabase
+//   .from('cities')
+//   .select('name, country_id')
+//   .filter('name', 'in', '("Paris","Tokyo")')
