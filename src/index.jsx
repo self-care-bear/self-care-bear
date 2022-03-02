@@ -4,11 +4,14 @@ import App from './App';
 import { UserProvider } from '../src/context/UserContext';
 
 import './style.css';
+import { TaskProvider } from './context/TaskContext';
 
 render(
   <React.StrictMode>
     <UserProvider>
-      <App />
+      <TaskProvider>
+        <App />
+      </TaskProvider>
     </UserProvider>
   </React.StrictMode>,
   document.getElementById('root')

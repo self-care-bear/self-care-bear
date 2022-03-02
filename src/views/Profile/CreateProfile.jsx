@@ -36,9 +36,8 @@ export default function CreateProfile() {
       user_id: user.id,
       user_name: name,
       bear: bear,
-      task_list: '',
+      task_list: [],
     });
-    console.log('response', response);
     setProfile(response);
     history.replace('/profile');
   };
