@@ -3,25 +3,48 @@ import { useUser } from '../../context/UserContext';
 import { deleteTask, updateTask } from '../../services/tasks';
 import './TaskCard.css';
 
-export default function TaskCard({ task }) {
+export default function TaskCard({ task, taskList, setTaskList }) {
   const { user } = useUser();
-  // console.log(user);
+  const [isExpanded, setIsExpanded] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [editTask, setEditTask] = useState(task);
 
   const handleDelete = () => {
     deleteTask(task.id);
+    setTaskList((prevState) => prevState.filter((item) => item.id !== task.id));
+  };
+
+  const handleExpand = () => {
+    setIsExpanded(!isExpanded);
   };
 
   const handleUpdate = async (e) => {
     e.preventDefault();
     updateTask(editTask.task, editTask.task_description, user.id);
+    const updatedTaskList = taskList.map((item) => {
+      item.id === editTask.id
+        ? {
+            ...editTask,
+            task: editTask.task,
+            task_description: editTask.task_description,
+          }
+        : item;
+    });
+    //need to get update working on refresh
+    // setTaskList(updatedTaskList);
     setIsEditing(false);
   };
 
   return (
-    <div className="task-card">
-      <p>{task.task}</p>
+    <div className="task-card" onClick={handleExpand}>
+      <h3>{task.task}</h3>
+      {isExpanded && !isEditing && (
+        <>
+          <p>{task.task_description}</p>
+          <button onClick={handleDelete}>delete task</button>
+          <button onClick={() => setIsEditing(true)}>edit task</button>
+        </>
+      )}
       {isEditing && (
         <>
           <form onSubmit={handleUpdate}>
@@ -48,11 +71,8 @@ export default function TaskCard({ task }) {
             />
             <button type="submit">save</button>
           </form>
-          <p>{task.task_description}</p>
         </>
       )}
-      <button onClick={handleDelete}>delete task</button>
-      <button onClick={() => setIsEditing(true)}>edit task</button>
     </div>
   );
 }

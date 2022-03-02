@@ -23,8 +23,6 @@ export async function createTask(task, task_description) {
   ]);
   return parseData(request);
 }
-
-
 export async function updateTask(task, task_description, user_id) {
   const request = await client
     .from('created_tasks')
@@ -37,3 +35,4 @@ export async function deleteTask(id) {
   const request = await client.from('created_tasks').delete().match({ id });
   return parseData(request);
 }
+//
