@@ -9,18 +9,20 @@ import { v4 as uuid } from 'uuid';
 import { getSelectedTasks } from '../../services/tasks';
 
 export default function Profile() {
+  const [selectedTasks, setSelectedTasks] = useState([]);
   const { user } = useUser();
   const { profile, loading } = useProfile();
 
   console.log('profile', profile);
 
-  // useEffect(() => {
-  //   const fetchSelectedTasks = async () => {
-  //     const data = await getSelectedTasks(user.id);
-  //     console.log('data', data);
-  //   };
-  //   fetchSelectedTasks();
-  // }, []);
+  useEffect(() => {
+    const fetchSelectedTasks = async () => {
+      const data = await getSelectedTasks(user.id);
+      console.log('data', data);
+      setSelectedTasks(data);
+    };
+    fetchSelectedTasks();
+  }, []);
 
   if (loading) return <p>loading...</p>;
 
@@ -30,9 +32,9 @@ export default function Profile() {
       <h2>Profile</h2>
       {profile.task_list}
       <ul className="profile-tasks">
-        {dummyTasks.map((task) => {
+        {selectedTasks.map((task) => {
           return (
-            <li className="profile-tasks_item">
+            <li className="profile-tasks_item" key={uuid()}>
               <input type="checkbox" />
               <p>{task.task}</p>
             </li>
