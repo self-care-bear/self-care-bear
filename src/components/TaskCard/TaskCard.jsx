@@ -6,14 +6,13 @@ import { useTasks } from '../../context/TaskContext';
 import { useProfile } from '../../hooks/useProfile';
 import { updateProfile } from '../../services/profiles';
 
-export default function TaskCard({ task }) {
+export default function TaskCard({ task, onEdit }) {
   const { user } = useUser();
-  // console.log(user);
   const { profile, setProfile } = useProfile();
   const [isExpanded, setIsExpanded] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [editTask, setEditTask] = useState(task);
-  const { taskList, setTaskList, selectedTasks, setSelectedTasks } = useTasks();
+  const { taskList, setTaskList } = useTasks();
 
   const handleDelete = () => {
     deleteTask(task.id);
@@ -26,18 +25,7 @@ export default function TaskCard({ task }) {
 
   const handleUpdate = async (e) => {
     e.preventDefault();
-    updateTask(editTask.id, editTask.task, editTask.task_description, user.id);
-    const updatedTaskList = taskList.map((item) => {
-      item.id === editTask.id
-        ? {
-            ...editTask,
-            task: editTask.task,
-            task_description: editTask.task_description,
-          }
-        : item;
-    });
-    //need to get update working on refresh
-    // setTaskList(updatedTaskList);
+    onEdit(editTask);
     setIsEditing(false);
   };
 
@@ -47,8 +35,8 @@ export default function TaskCard({ task }) {
 
   return (
     <div className="task-card">
-      <h3 className="task-card_title">{task.task}</h3>
-      {isExpanded && <p>{task.task_description}</p>}
+      <h3 className="task-card_title">{task?.task}</h3>
+      {isExpanded && <p>{task?.task_description}</p>}
       <div className="task-card_buttons">
         {isExpanded && !isEditing && (
           <>
@@ -56,7 +44,7 @@ export default function TaskCard({ task }) {
             <button onClick={handleDelete}>Delete</button>
           </>
         )}
-        {!isEditing && <button onClick={handleSelect}>Add to Tasks</button>}
+        {!isEditing && <button onClick={handleSelect}>Select Task</button>}
       </div>
       {!isExpanded && (
         <p className="task-card_arrow" onClick={handleExpand}>

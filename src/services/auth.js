@@ -6,7 +6,7 @@ export function getUser() {
 
 export async function signUpUser(email, password) {
   const request = await client.auth.signUp({ email, password });
-  return parseData(request);
+  return request;
 }
 
 export async function signInUser(email, password) {

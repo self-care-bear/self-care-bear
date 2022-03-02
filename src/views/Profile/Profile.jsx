@@ -11,15 +11,25 @@ import {
   getCompletedTasks,
   updateTask,
 } from '../../services/tasks';
+import brown1 from '../../assets/brown1.png';
+import brown2 from '../../assets/brown2.png';
+import brown3 from '../../assets/brown3.png';
+import brown4 from '../../assets/brown4.png';
+import brown5 from '../../assets/brown5.png';
+import brown6 from '../../assets/brown6.png';
+import panda1 from '../../assets/panda1.png';
+import panda2 from '../../assets/panda2.png';
+import panda3 from '../../assets/panda3.png';
+import panda4 from '../../assets/panda4.png';
+import panda5 from '../../assets/panda5.png';
+import panda6 from '../../assets/panda6.png';
 
 export default function Profile() {
   const [selectedTasks, setSelectedTasks] = useState([]);
   const [completedTasks, setCompletedTasks] = useState([]);
-  const [isCompleted, setIsCompleted] = useState(false);
+  const [isCompleted, setIsCompleted] = useState({});
   const { user } = useUser();
   const { profile, loading } = useProfile();
-
-  console.log('profile', profile);
 
   useEffect(() => {
     const fetchSelectedTasks = async () => {
@@ -30,24 +40,31 @@ export default function Profile() {
     fetchSelectedTasks();
   }, []);
 
-  useEffect(() => {
-    const fetchCompletedTasks = async () => {
-      const data = await getCompletedTasks(user.id);
-      console.log('data', data);
-      setCompletedTasks(data);
-    };
-    fetchCompletedTasks();
-  }, []);
+  //   useEffect(() => {
+  //     const fetchCompletedTasks = async () => {
+  //       const data = await getCompletedTasks(user.id);
+  //       setCompletedTasks(data);
+  //     };
+  //     fetchCompletedTasks();
+  //   }, []);
 
   const handleToggle = async (task) => {
-    setIsCompleted(!isCompleted);
+    const taskCompleted =
+      isCompleted[task.id] !== undefined
+        ? !isCompleted[task.id]
+        : !task.is_completed;
+
+    setIsCompleted((prevState) => ({
+      ...prevState,
+      [task.id]: taskCompleted,
+    }));
     await updateTask(
       task.id,
       task.task,
       task.task_description,
       user.id,
       true,
-      !isCompleted
+      taskCompleted
     );
   };
 
@@ -55,8 +72,7 @@ export default function Profile() {
 
   if (!loading && !profile.user_name) return <Redirect to="/profile/create" />;
   return (
-    <div>
-      <h2>Profile</h2>
+    <div className="profile">
       {profile.task_list}
       <ul className="profile-tasks">
         {selectedTasks.map((task) => {
@@ -64,7 +80,11 @@ export default function Profile() {
             <li className="profile-tasks_item" key={uuid()}>
               <input
                 type="checkbox"
-                checked={task.is_completed}
+                checked={
+                  isCompleted[task.id] !== undefined
+                    ? isCompleted[task.id]
+                    : task.is_completed
+                }
                 onChange={() => handleToggle(task)}
               />
               <p>{task.task}</p>
@@ -72,6 +92,25 @@ export default function Profile() {
           );
         })}
       </ul>
+      {/* <img src={`${profile.bear}1`} /> */}
+      {Object.values(isCompleted).filter((val) => val).length === 0 && (
+        <img src={brown1} />
+      )}
+      {Object.values(isCompleted).filter((val) => val).length === 1 && (
+        <img src={brown2} />
+      )}
+      {Object.values(isCompleted).filter((val) => val).length === 2 && (
+        <img src={brown3} />
+      )}
+      {Object.values(isCompleted).filter((val) => val).length === 3 && (
+        <img src={brown4} />
+      )}
+      {Object.values(isCompleted).filter((val) => val).length === 4 && (
+        <img src={brown5} />
+      )}
+      {Object.values(isCompleted).filter((val) => val).length === 5 && (
+        <img src={brown6} />
+      )}
     </div>
   );
 }

@@ -9,7 +9,8 @@ export async function getCreatedTasks(user_id) {
   const request = await client
     .from('created_tasks')
     .select('*')
-    .match({ user_id });
+    .match({ user_id })
+    .order('created_at', { ascending: false });
   return parseData(request);
 }
 
@@ -47,7 +48,8 @@ export async function getSelectedTasks(user_id) {
   const request = await client
     .from('created_tasks')
     .select('*')
-    .match({ user_id, is_selected: true });
+    .match({ user_id, is_selected: true })
+    .order('created_at', { ascending: false });
   return parseData(request);
 }
 
@@ -55,6 +57,7 @@ export async function getCompletedTasks(user_id) {
   const request = await client
     .from('created_tasks')
     .select('*')
-    .match({ user_id, is_completed: true });
+    .match({ user_id, is_completed: true })
+    .order('created_at', { ascending: false });
   return parseData(request);
 }

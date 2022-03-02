@@ -1,4 +1,4 @@
-import { getCreatedTasks, createTask } from '../../services/tasks';
+import { getCreatedTasks, createTask, updateTask } from '../../services/tasks';
 import { useEffect, useState } from 'react';
 import { useUser } from '../../context/UserContext';
 import TaskCard from '../../components/TaskCard/TaskCard';
@@ -9,23 +9,6 @@ import { useTasks } from '../../context/TaskContext';
 
 export default function TaskSelector() {
   const { user } = useUser();
-  //   const initialTasks = [
-  //     {
-  //       task_id: uuid(),
-  //       task: 'Stretch',
-  //       task_description: 'Do a yoga practice!',
-  //     },
-  //     {
-  //       task_id: uuid(),
-  //       task: 'Eat a vegebil',
-  //       task_description: 'Eat a carrot!',
-  //     },
-  //     {
-  //       task_id: uuid(),
-  //       task: 'Pet your cat',
-  //       task_description: 'And kiss it, too!',
-  //     },
-  //   ];
   const [loading, setLoading] = useState(true);
   //   const [taskList, setTaskList] = useState(initialTasks);
   const { taskList, setTaskList } = useTasks([]);
@@ -50,13 +33,26 @@ export default function TaskSelector() {
     // fetchPresetData();
   }, []);
 
+  const handleTaskEdit = (editTask) => {
+    updateTask(editTask.id, editTask.task, editTask.task_description, user.id);
+    const updatedTaskList = taskList.map((item) => {
+      return item.id === editTask.id
+        ? {
+            ...editTask,
+            task: editTask.task,
+            task_description: editTask.task_description,
+          }
+        : item;
+    });
+    //need to get update working on refresh
+    setTaskList(updatedTaskList);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    createTask(newTask, newTaskDesc);
-    setTaskList((prevState) => [
-      ...prevState,
-      { task: newTask, task_description: newTaskDesc },
-    ]);
+    const task = await createTask(newTask, newTaskDesc);
+    console.log('task', task);
+    setTaskList((prevState) => [...prevState, task[0]]);
   };
 
   if (loading) return <span>Loading...</span>;
@@ -92,7 +88,7 @@ export default function TaskSelector() {
       </form>
       <div className="card-container">
         {taskList.map((task) => {
-          return <TaskCard key={uuid()} task={task} />;
+          return <TaskCard key={uuid()} onEdit={handleTaskEdit} task={task} />;
         })}
         {selectedTasks.map((task) => {
           return <p key={task.id}>{task.task}</p>;

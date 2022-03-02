@@ -9,19 +9,13 @@ import { createProfile } from '../../services/profiles';
 // import { getUser } from '../../services/auth';
 
 export default function CreateProfile() {
-  const { user } = useUser();
-  // const [user, setUser] = useState({});
+  const { user, setUser } = useUser();
   const { profile, setProfile, loading } = useProfile();
   const history = useHistory();
   const [bear, setBear] = useState('');
   const [name, setName] = useState('');
 
   useEffect(() => {
-    // const fetchUser = () => {
-    //   const data = getUser();
-    //   setUser(data);
-    // };
-    // fetchUser();
     setName(profile.user_name);
     setBear(profile.bear);
   }, [profile]);
@@ -36,8 +30,6 @@ export default function CreateProfile() {
       user_id: user.id,
       user_name: name,
       bear: bear,
-      task_list: [],
-      textarray: [],
     });
     console.log('response', response);
     setProfile(response);
