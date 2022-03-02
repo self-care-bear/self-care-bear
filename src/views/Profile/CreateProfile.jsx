@@ -37,6 +37,7 @@ export default function CreateProfile() {
       user_name: name,
       bear: bear,
       task_list: [],
+      textarray: [],
     });
     console.log('response', response);
     setProfile(response);
