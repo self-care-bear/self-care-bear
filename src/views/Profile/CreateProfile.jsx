@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useProfile } from '../../hooks/useProfile';
+import { useUser } from '../../context/UserContext';
 import BrownBear from '../../assets/brown2.png';
 import PandaBear from '../../assets/panda2.png';
 import './Profile.css';
 import { createProfile } from '../../services/profiles';
 
 export default function CreateProfile() {
+  const { user } = useUser();
   const { profile, setProfile, loading } = useProfile();
   const history = useHistory();
   const [bear, setBear] = useState('');
@@ -21,13 +23,20 @@ export default function CreateProfile() {
     setBear(e.target.value);
   };
 
-  const handleSubmit = async () => {
-    await createProfile({ user_name: name, bear: bear });
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const response = await createProfile({
+      user_id: user.id,
+      user_name: name,
+      bear: bear,
+      task_list: '',
+    });
+    setProfile(response);
   };
   return (
     <div className="create-container">
       <h2>create profile</h2>
-      <form>
+      <form onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder="name"
