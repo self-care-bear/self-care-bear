@@ -28,11 +28,12 @@ export async function updateTask(
   task,
   task_description,
   user_id,
-  is_selected
+  is_selected,
+  is_completed
 ) {
   const request = await client
     .from('created_tasks')
-    .update({ task, task_description, is_selected })
+    .update({ task, task_description, is_selected, is_completed })
     .match({ id, user_id });
   return parseData(request);
 }
@@ -50,6 +51,7 @@ export async function getSelectedTasks(user_id) {
   return parseData(request);
 }
 
+<<<<<<< HEAD
 // const { data, error } = await supabase
 //   .from('cities')
 //   .select('name, country_id')
@@ -64,3 +66,12 @@ export async function getSelectedTasks(user_id) {
 //   .from('cities')
 //   .select('name, country_id')
 //   .filter('name', 'in', '("Paris","Tokyo")')
+=======
+export async function getCompletedTasks(user_id) {
+  const request = await client
+    .from('created_tasks')
+    .select('*')
+    .match({ user_id, is_completed: true });
+  return parseData(request);
+}
+>>>>>>> 34bd54e80719affef32efa0829d92f6da4f46180
