@@ -24,3 +24,11 @@
   display: flex;
   gap: 4vw;
 }
+
+.profile-tasks_item {
+  display: flex;
+}
+
+.profile-tasks_item p {
+  margin: 0;
+}

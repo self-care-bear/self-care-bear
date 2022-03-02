@@ -20,6 +20,16 @@ const initialTasks = [
     task: 'Pet your cat',
     task_description: 'And kiss it, too!',
   },
+  {
+    task_id: uuid(),
+    task: 'Go outside',
+    task_description: 'Get some vitamin D!',
+  },
+  {
+    task_id: uuid(),
+    task: 'Call a friend',
+    task_description: 'And tell them you love them!',
+  },
 ];
 
 const TaskProvider = ({ children }) => {
