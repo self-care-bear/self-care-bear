@@ -1,3 +1,35 @@
+.create-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1vh;
+}
+
+.create-container_form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3vh;
+}
+
+.create-container_form input[type='radio'] {
+  display: none;
+}
+
 .create-container img {
   width: 200px;
 }
+
+.create-container_bears {
+  display: flex;
+  gap: 4vw;
+}
+
+.profile-tasks_item {
+  display: flex;
+}
+
+.profile-tasks_item p {
+  margin: 0;
+}
+

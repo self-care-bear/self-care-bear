@@ -36,7 +36,7 @@ export default function CreateProfile() {
       user_id: user.id,
       user_name: name,
       bear: bear,
-      task_list: '',
+      task_list: [],
     });
     console.log('response', response);
     setProfile(response);
@@ -45,33 +45,35 @@ export default function CreateProfile() {
   return (
     <div className="create-container">
       <h2>create profile</h2>
-      <form onSubmit={handleSubmit}>
+      <form className="create-container_form" onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder="name"
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
-        <label>
-          <input
-            type="radio"
-            name="bear"
-            value="brown"
-            checked={bear === 'brown'}
-            onChange={handleChange}
-          />
-          <img src={BrownBear} />
-        </label>
-        <label>
-          <input
-            type="radio"
-            name="bear"
-            value="panda"
-            checked={bear === 'panda'}
-            onChange={handleChange}
-          />
-          <img src={PandaBear} />
-        </label>
+        <div className="create-container_bears">
+          <label>
+            <input
+              type="radio"
+              name="bear"
+              value="brown"
+              checked={bear === 'brown'}
+              onChange={handleChange}
+            />
+            <img src={BrownBear} />
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="bear"
+              value="panda"
+              checked={bear === 'panda'}
+              onChange={handleChange}
+            />
+            <img src={PandaBear} />
+          </label>
+        </div>
         <button type="submit">submit</button>
       </form>
     </div>

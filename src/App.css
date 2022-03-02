@@ -1,13 +1,8 @@
-/*
-  Example of using Tailwind classes in a CSS file:
-*/
-/* body {
-  @apply bg-slate-800;
-} */
+@import url('https://fonts.googleapis.com/css2?family=Laila:wght@500&display=swap');
 
 body {
   margin: 0;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Laila', sans-serif;
 }
 
 .App {

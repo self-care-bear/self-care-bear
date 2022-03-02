@@ -11,14 +11,13 @@ export const useProfile = () => {
     user_name: '',
     user_id: '',
     bear: '',
-    task_list: '',
+    task_list: [],
   });
 
   useEffect(() => {
     const fetchProfile = async () => {
       try {
         const response = await getProfileById(user.id);
-        console.log(response);
         setProfile(response);
       } catch (error) {
         console.log('error', error);
