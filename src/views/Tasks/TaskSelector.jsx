@@ -15,6 +15,7 @@ export default function TaskSelector() {
   const [taskList, setTaskList] = useState([]);
   const [newTask, setNewTask] = useState('');
   const [newTaskDesc, setNewTaskDesc] = useState('');
+  const [selectedTasks, setSelectedTasks] = useState([]);
 
   useEffect(() => {
     const fetchCreatedData = async () => {
@@ -72,8 +73,12 @@ export default function TaskSelector() {
               task={task}
               taskList={taskList}
               setTaskList={setTaskList}
+              setSelectedTasks={setSelectedTasks}
             />
           );
+        })}
+        {selectedTasks.map((task) => {
+          return <p key={task.id}>{task.task}</p>;
         })}
       </div>
     </div>
