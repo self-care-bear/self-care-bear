@@ -14,7 +14,9 @@ export default function Auth({ isSigningUp = false }) {
     e.preventDefault();
     try {
       if (isSigningUp) {
-        await signUpUser(email, password);
+        const response = await signUpUser(email, password);
+        console.log('response', response);
+        setUser({ id: response.user.id, email: response.user.email });
         history.replace('/profile');
       } else {
         const response = await signInUser(email, password);
