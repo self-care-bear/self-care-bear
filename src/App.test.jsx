@@ -12,5 +12,5 @@ test('there is a home page', () => {
     </MemoryRouter>
   );
 
-  screen.getByText(/Self Care Bear/i);
+  screen.getByRole('heading', { name: /Self Care Bear/i });
 });
