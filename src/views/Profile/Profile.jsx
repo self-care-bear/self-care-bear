@@ -1,16 +1,9 @@
 import { Redirect } from 'react-router-dom';
 import { useUser } from '../../context/UserContext';
 import { useProfile } from '../../hooks/useProfile';
-import { getProfileById } from '../../services/profiles';
-import CreateProfile from './CreateProfile';
-import { useTasks } from '../../context/TaskContext';
-import { createContext, useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { v4 as uuid } from 'uuid';
-import {
-  getSelectedTasks,
-  getCompletedTasks,
-  updateTask,
-} from '../../services/tasks';
+import { getSelectedTasks, updateTask } from '../../services/tasks';
 import brown1 from '../../assets/brown1.png';
 import brown2 from '../../assets/brown2.png';
 import brown3 from '../../assets/brown3.png';
@@ -26,7 +19,6 @@ import panda6 from '../../assets/panda6.png';
 
 export default function Profile() {
   const [selectedTasks, setSelectedTasks] = useState([]);
-  const [completedTasks, setCompletedTasks] = useState([]);
   const [isCompleted, setIsCompleted] = useState({});
   const { user } = useUser();
   const { profile, loading } = useProfile();
@@ -34,19 +26,10 @@ export default function Profile() {
   useEffect(() => {
     const fetchSelectedTasks = async () => {
       const data = await getSelectedTasks(user.id);
-      // console.log('data', data);
       setSelectedTasks(data);
     };
     fetchSelectedTasks();
   }, []);
-
-  //   useEffect(() => {
-  //     const fetchCompletedTasks = async () => {
-  //       const data = await getCompletedTasks(user.id);
-  //       setCompletedTasks(data);
-  //     };
-  //     fetchCompletedTasks();
-  //   }, []);
 
   const handleToggle = async (task) => {
     const taskCompleted =
@@ -92,11 +75,56 @@ export default function Profile() {
           );
         })}
       </ul>
-      {/* <img src={`${profile.bear}1`} /> */}
-      {Object.values(isCompleted).filter((val) => val).length === 0 && (
-        <img src={brown1} />
-      )}
-      {Object.values(isCompleted).filter((val) => val).length === 1 && (
+
+      {(profile.bear === 'brown' &&
+        Object.values(isCompleted).filter((val) => val).length === 0 && (
+          <img src={brown1} />
+        )) ||
+        (profile.bear === 'panda' &&
+          Object.values(isCompleted).filter((val) => val).length === 0 && (
+            <img src={panda1} />
+          ))}
+      {(profile.bear === 'brown' &&
+        Object.values(isCompleted).filter((val) => val).length === 1 && (
+          <img src={brown2} />
+        )) ||
+        (profile.bear === 'panda' &&
+          Object.values(isCompleted).filter((val) => val).length === 1 && (
+            <img src={panda2} />
+          ))}
+      {(profile.bear === 'brown' &&
+        Object.values(isCompleted).filter((val) => val).length === 2 && (
+          <img src={brown3} />
+        )) ||
+        (profile.bear === 'panda' &&
+          Object.values(isCompleted).filter((val) => val).length === 2 && (
+            <img src={panda3} />
+          ))}
+      {(profile.bear === 'brown' &&
+        Object.values(isCompleted).filter((val) => val).length === 3 && (
+          <img src={brown4} />
+        )) ||
+        (profile.bear === 'panda' &&
+          Object.values(isCompleted).filter((val) => val).length === 3 && (
+            <img src={panda4} />
+          ))}
+      {(profile.bear === 'brown' &&
+        Object.values(isCompleted).filter((val) => val).length === 4 && (
+          <img src={brown5} />
+        )) ||
+        (profile.bear === 'panda' &&
+          Object.values(isCompleted).filter((val) => val).length === 4 && (
+            <img src={panda5} />
+          ))}
+      {(profile.bear === 'brown' &&
+        Object.values(isCompleted).filter((val) => val).length === 5 && (
+          <img src={brown6} />
+        )) ||
+        (profile.bear === 'panda' &&
+          Object.values(isCompleted).filter((val) => val).length === 5 && (
+            <img src={panda6} />
+          ))}
+      {/* {Object.values(isCompleted).filter((val) => val).length === 1 && (
         <img src={brown2} />
       )}
       {Object.values(isCompleted).filter((val) => val).length === 2 && (
@@ -110,7 +138,7 @@ export default function Profile() {
       )}
       {Object.values(isCompleted).filter((val) => val).length === 5 && (
         <img src={brown6} />
-      )}
+      )} */}
     </div>
   );
 }
