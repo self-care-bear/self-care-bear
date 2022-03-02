@@ -24,17 +24,11 @@ export default function Profile() {
   useEffect(() => {
     const fetchSelectedTasks = async () => {
       const data = await getSelectedTasks(user.id);
-<<<<<<< HEAD
-      console.log('data', data);
-=======
       // console.log('data', data);
->>>>>>> 34bd54e80719affef32efa0829d92f6da4f46180
       setSelectedTasks(data);
     };
     fetchSelectedTasks();
   }, []);
-<<<<<<< HEAD
-=======
 
   useEffect(() => {
     const fetchCompletedTasks = async () => {
@@ -56,7 +50,6 @@ export default function Profile() {
       !isCompleted
     );
   };
->>>>>>> 34bd54e80719affef32efa0829d92f6da4f46180
 
   if (loading) return <p>loading...</p>;
 
@@ -69,15 +62,11 @@ export default function Profile() {
         {selectedTasks.map((task) => {
           return (
             <li className="profile-tasks_item" key={uuid()}>
-<<<<<<< HEAD
-              <input type="checkbox" />
-=======
               <input
                 type="checkbox"
                 checked={task.is_completed}
                 onChange={() => handleToggle(task)}
               />
->>>>>>> 34bd54e80719affef32efa0829d92f6da4f46180
               <p>{task.task}</p>
             </li>
           );
