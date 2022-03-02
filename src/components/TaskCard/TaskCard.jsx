@@ -8,6 +8,7 @@ import { updateProfile } from '../../services/profiles';
 
 export default function TaskCard({ task }) {
   const { user } = useUser();
+  // console.log(user);
   const { profile, setProfile } = useProfile();
   const [isExpanded, setIsExpanded] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
@@ -25,7 +26,7 @@ export default function TaskCard({ task }) {
 
   const handleUpdate = async (e) => {
     e.preventDefault();
-    updateTask(editTask.task, editTask.task_description, user.id);
+    updateTask(editTask.id, editTask.task, editTask.task_description, user.id);
     const updatedTaskList = taskList.map((item) => {
       item.id === editTask.id
         ? {
@@ -41,17 +42,7 @@ export default function TaskCard({ task }) {
   };
 
   const handleSelect = async () => {
-    setSelectedTasks((prevState) => [...prevState, task]);
-    console.log('selectedTasks', selectedTasks);
-    const response = await updateProfile({
-      user_id: user.id,
-      user_name: profile.name,
-      bear: profile.bear,
-      task_list: '',
-      textarray: [...selectedTasks],
-    });
-    console.log('response', response);
-    setProfile(response);
+    await updateTask(task.id, task.task, task.task_description, user.id, true);
   };
 
   return (
