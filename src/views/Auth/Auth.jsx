@@ -2,6 +2,7 @@ import { useHistory } from 'react-router-dom';
 import { useState } from 'react';
 import { signInUser, signUpUser } from '../../services/auth';
 import { useUser } from '../../context/UserContext';
+import './Auth.css';
 
 export default function Auth({ isSigningUp = false }) {
   const { setUser } = useUser();
