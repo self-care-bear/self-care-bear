@@ -23,10 +23,10 @@ export async function createTask(task, task_description) {
   ]);
   return parseData(request);
 }
-export async function updateTask(task, task_description, user_id) {
+export async function updateTask(task, task_description, user_id, is_selected) {
   const request = await client
     .from('created_tasks')
-    .update({ task, task_description })
+    .update({ task, task_description, is_selected })
     .match({ user_id });
   return parseData(request);
 }
@@ -35,4 +35,11 @@ export async function deleteTask(id) {
   const request = await client.from('created_tasks').delete().match({ id });
   return parseData(request);
 }
-//
+
+export async function getSelectedTasks(user_id) {
+  const request = await client
+    .from('selected_tasks')
+    .select('*')
+    .match({ user_id });
+  return parseData(request);
+}
