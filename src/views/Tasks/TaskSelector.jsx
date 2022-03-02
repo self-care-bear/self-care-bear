@@ -67,7 +67,12 @@ export default function TaskSelector() {
       <div className="card-container">
         {taskList.map((task) => {
           return (
-            <TaskCard key={uuid()} task={task} setTaskList={setTaskList} />
+            <TaskCard
+              key={uuid()}
+              task={task}
+              taskList={taskList}
+              setTaskList={setTaskList}
+            />
           );
         })}
       </div>
