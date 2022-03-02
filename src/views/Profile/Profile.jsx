@@ -49,7 +49,6 @@ export default function Profile() {
       true,
       !isCompleted
     );
-    // setTodos(updatedTodos);
   };
 
   if (loading) return <p>loading...</p>;
@@ -65,7 +64,7 @@ export default function Profile() {
             <li className="profile-tasks_item" key={uuid()}>
               <input
                 type="checkbox"
-                checked={isCompleted}
+                checked={task.is_completed}
                 onChange={() => handleToggle(task)}
               />
               <p>{task.task}</p>
