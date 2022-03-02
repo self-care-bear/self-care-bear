@@ -92,6 +92,7 @@ export default function TaskSelector() {
       </form>
       <div className="card-container">
         {taskList.map((task) => {
+
           return <TaskCard key={uuid()} task={task} />;
         })}
       </div>
