@@ -1,29 +1,32 @@
 import { useState } from 'react';
-import { getProfile } from '../services/profiles';
+import { getProfileById } from '../services/profiles';
 import { useEffect } from 'react';
+import { useUser } from '../context/UserContext';
 
 export const useProfile = () => {
+  const { user } = useUser();
+  console.log('user', user);
   const [loading, setLoading] = useState(true);
   const [profile, setProfile] = useState({
     user_name: '',
+    user_id: '',
     bear: '',
-    task_list: [],
+    task_list: '',
   });
 
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await getProfile();
+        const response = await getProfileById(user.id);
+        console.log('response', response);
         setProfile(response);
-        setLoading(false);
       } catch (error) {
-        setProfile({ user_name: '', bear: '', task_list: [] });
+        console.log('error', error);
       } finally {
         setLoading(false);
       }
     };
     fetchProfile();
   }, []);
-
   return { profile, setProfile, loading };
 };
