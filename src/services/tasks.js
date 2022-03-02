@@ -28,11 +28,12 @@ export async function updateTask(
   task,
   task_description,
   user_id,
-  is_selected
+  is_selected,
+  is_completed
 ) {
   const request = await client
     .from('created_tasks')
-    .update({ task, task_description, is_selected })
+    .update({ task, task_description, is_selected, is_completed })
     .match({ id, user_id });
   return parseData(request);
 }
@@ -50,17 +51,10 @@ export async function getSelectedTasks(user_id) {
   return parseData(request);
 }
 
-// const { data, error } = await supabase
-//   .from('cities')
-//   .select('name, country_id')
-//   .match({name: 'Beijing', country_id: 156})
-
-// go into created tasks
-// find selected 'true'
-// match by user_id
-// return those
-
-// const { data, error } = await supabase
-//   .from('cities')
-//   .select('name, country_id')
-//   .filter('name', 'in', '("Paris","Tokyo")')
+export async function getCompletedTasks(user_id) {
+  const request = await client
+    .from('created_tasks')
+    .select('*')
+    .match({ user_id, is_completed: true });
+  return parseData(request);
+}
