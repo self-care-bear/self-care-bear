@@ -17,7 +17,8 @@ export default function Auth({ isSigningUp = false }) {
         history.replace('/profile');
       } else {
         const response = await signInUser(email, password);
-        setUser({ id: response.id, email: response.email });
+        console.log('response', response);
+        setUser({ id: response.user.id, email: response.user.email });
         history.replace('/profile');
       }
     } catch (error) {
