@@ -9,19 +9,13 @@ import { createProfile } from '../../services/profiles';
 // import { getUser } from '../../services/auth';
 
 export default function CreateProfile() {
-  const { user } = useUser();
-  // const [user, setUser] = useState({});
+  const { user, setUser } = useUser();
   const { profile, setProfile, loading } = useProfile();
   const history = useHistory();
   const [bear, setBear] = useState('');
   const [name, setName] = useState('');
 
   useEffect(() => {
-    // const fetchUser = () => {
-    //   const data = getUser();
-    //   setUser(data);
-    // };
-    // fetchUser();
     setName(profile.user_name);
     setBear(profile.bear);
   }, [profile]);

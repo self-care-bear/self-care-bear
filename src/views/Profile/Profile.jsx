@@ -31,8 +31,6 @@ export default function Profile() {
   const { user } = useUser();
   const { profile, loading } = useProfile();
 
-  console.log(`${profile.bear}1`);
-
   useEffect(() => {
     const fetchSelectedTasks = async () => {
       const data = await getSelectedTasks(user.id);
@@ -94,8 +92,7 @@ export default function Profile() {
           );
         })}
       </ul>
-      {/* {completedTasks.length === 5 && <img src={`${profile.bear}1`} />} */}
-
+      {/* <img src={`${profile.bear}1`} /> */}
       {Object.values(isCompleted).filter((val) => val).length === 0 && (
         <img src={brown1} />
       )}
