@@ -33,30 +33,44 @@ export default function TaskSelector() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     createTask(newTask, newTaskDesc);
+    setTaskList((prevState) => [
+      ...prevState,
+      { task: newTask, task_description: newTaskDesc },
+    ]);
   };
 
   if (loading) return <span>Loading...</span>;
 
   return (
-    <div className="card-container">
-      {taskList.map((task) => {
-        return <TaskCard key={uuid()} task={task} />;
-      })}
-      <form onSubmit={handleSubmit}>
+    <div className="task-selector">
+      <form className="task-selector_form" onSubmit={handleSubmit}>
+        <label htmlFor="newTask">Task:</label>
         <input
           type="text"
+          id="newTask"
+          name="newTask"
           value={newTask}
           placeholder="task"
           onChange={(e) => setNewTask(e.target.value)}
         />
+        <label htmlFor="newTaskDesc">Task Description:</label>
         <input
           type="text"
+          id="newTaskDesc"
+          name="newTaskDesc"
           value={newTaskDesc}
           onChange={(e) => setNewTaskDesc(e.target.value)}
           placeholder="description"
         />
         <button type="submit">submit</button>
       </form>
+      <div className="card-container">
+        {taskList.map((task) => {
+          return (
+            <TaskCard key={uuid()} task={task} setTaskList={setTaskList} />
+          );
+        })}
+      </div>
     </div>
   );
 }

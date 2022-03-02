@@ -1,6 +1,11 @@
 .task-card {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   margin: 10px;
   background-color: grey;
-  padding: 5px;
+  padding: 2vh;
+  cursor: pointer;
+  border-radius: 10px;
+  text-transform: capitalize;
 }
