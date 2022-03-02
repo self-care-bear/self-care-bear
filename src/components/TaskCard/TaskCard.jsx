@@ -1,14 +1,11 @@
 import { useState } from 'react';
 import { useUser } from '../../context/UserContext';
 import { deleteTask, updateTask } from '../../services/tasks';
-import './TaskCard.css';
 import { useTasks } from '../../context/TaskContext';
-import { useProfile } from '../../hooks/useProfile';
-import { updateProfile } from '../../services/profiles';
+import './TaskCard.css';
 
-export default function TaskCard({ task, onEdit }) {
+export default function TaskCard({ task, onEdit, setIsSelected, isSelected }) {
   const { user } = useUser();
-  const { profile, setProfile } = useProfile();
   const [isExpanded, setIsExpanded] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [editTask, setEditTask] = useState(task);
@@ -31,6 +28,14 @@ export default function TaskCard({ task, onEdit }) {
 
   const handleSelect = async () => {
     await updateTask(task.id, task.task, task.task_description, user.id, true);
+    const taskSelected =
+      isSelected[task.id] !== undefined
+        ? !isSelected[task.id]
+        : !task.is_selected;
+    setIsSelected((prevState) => ({
+      ...prevState,
+      [task.id]: taskSelected,
+    }));
   };
 
   return (

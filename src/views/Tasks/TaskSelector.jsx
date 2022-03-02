@@ -10,12 +10,10 @@ import { useTasks } from '../../context/TaskContext';
 export default function TaskSelector() {
   const { user } = useUser();
   const [loading, setLoading] = useState(true);
-  //   const [taskList, setTaskList] = useState(initialTasks);
   const { taskList, setTaskList } = useTasks([]);
   const [newTask, setNewTask] = useState('');
   const [newTaskDesc, setNewTaskDesc] = useState('');
-  //   const [selectedTasks, setSelectedTasks] = useState([]);
-  const { selectedTasks, setSelectedTasks } = useTasks();
+  const [isSelected, setIsSelected] = useState({});
   const history = useHistory();
 
   useEffect(() => {
@@ -24,13 +22,7 @@ export default function TaskSelector() {
       setTaskList((prevState) => [...prevState, ...createdData]);
       setLoading(false);
     };
-    // const fetchPresetData = async () => {
-    //   const presetData = await getPresetTasks();
-    //   setTaskList((prevState) => [...prevState, ...presetData]);
-    //   setLoading(false);
-    // };
     fetchCreatedData();
-    // fetchPresetData();
   }, []);
 
   const handleTaskEdit = (editTask) => {
@@ -44,24 +36,20 @@ export default function TaskSelector() {
           }
         : item;
     });
-    //need to get update working on refresh
     setTaskList(updatedTaskList);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const task = await createTask(newTask, newTaskDesc);
-    console.log('task', task);
     setTaskList((prevState) => [...prevState, task[0]]);
   };
 
   if (loading) return <span>Loading...</span>;
 
-  //   if (selectedTasks.length === 5) {
-  //     setTimeout(() => {
-  //       history.push('/profile');
-  //     }, 1000);
-  //   }
+  if (Object.values(isSelected).filter((val) => val).length === 5) {
+    history.push('/profile');
+  }
 
   return (
     <div className="task-selector">
@@ -88,16 +76,17 @@ export default function TaskSelector() {
       </form>
       <div className="card-container">
         {taskList.map((task) => {
-          return <TaskCard key={uuid()} onEdit={handleTaskEdit} task={task} />;
-        })}
-        {selectedTasks.map((task) => {
-          return <p key={task.id}>{task.task}</p>;
+          return (
+            <TaskCard
+              key={uuid()}
+              onEdit={handleTaskEdit}
+              task={task}
+              isSelected={isSelected}
+              setIsSelected={setIsSelected}
+            />
+          );
         })}
       </div>
-      {selectedTasks &&
-        selectedTasks.map((task) => {
-          return <p key={uuid()}>{task.task}</p>;
-        })}
     </div>
   );
 }

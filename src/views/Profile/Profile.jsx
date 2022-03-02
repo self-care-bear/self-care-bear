@@ -124,21 +124,6 @@ export default function Profile() {
           Object.values(isCompleted).filter((val) => val).length === 5 && (
             <img src={panda6} />
           ))}
-      {/* {Object.values(isCompleted).filter((val) => val).length === 1 && (
-        <img src={brown2} />
-      )}
-      {Object.values(isCompleted).filter((val) => val).length === 2 && (
-        <img src={brown3} />
-      )}
-      {Object.values(isCompleted).filter((val) => val).length === 3 && (
-        <img src={brown4} />
-      )}
-      {Object.values(isCompleted).filter((val) => val).length === 4 && (
-        <img src={brown5} />
-      )}
-      {Object.values(isCompleted).filter((val) => val).length === 5 && (
-        <img src={brown6} />
-      )} */}
     </div>
   );
 }

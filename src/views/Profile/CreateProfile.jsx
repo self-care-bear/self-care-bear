@@ -31,9 +31,8 @@ export default function CreateProfile() {
       user_name: name,
       bear: bear,
     });
-    console.log('response', response);
     setProfile(response);
-    history.replace('/profile');
+    history.replace('/profile/tasks');
   };
   return (
     <div className="create-container">
