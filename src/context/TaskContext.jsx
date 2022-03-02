@@ -4,36 +4,36 @@ import { v4 as uuid } from 'uuid';
 
 export const TaskContext = createContext();
 
-const initialTasks = [
-  {
-    task_id: uuid(),
-    task: 'Stretch',
-    task_description: 'Do a yoga practice!',
-  },
-  {
-    task_id: uuid(),
-    task: 'Eat a vegebil',
-    task_description: 'Eat a carrot!',
-  },
-  {
-    task_id: uuid(),
-    task: 'Pet your cat',
-    task_description: 'And kiss it, too!',
-  },
-  {
-    task_id: uuid(),
-    task: 'Go outside',
-    task_description: 'Get some vitamin D!',
-  },
-  {
-    task_id: uuid(),
-    task: 'Call a friend',
-    task_description: 'And tell them you love them!',
-  },
-];
+// const initialTasks = [
+//   {
+//     task_id: uuid(),
+//     task: 'Stretch',
+//     task_description: 'Do a yoga practice!',
+//   },
+//   {
+//     task_id: uuid(),
+//     task: 'Eat a vegebil',
+//     task_description: 'Eat a carrot!',
+//   },
+//   {
+//     task_id: uuid(),
+//     task: 'Pet your cat',
+//     task_description: 'And kiss it, too!',
+//   },
+//   {
+//     task_id: uuid(),
+//     task: 'Go outside',
+//     task_description: 'Get some vitamin D!',
+//   },
+//   {
+//     task_id: uuid(),
+//     task: 'Call a friend',
+//     task_description: 'And tell them you love them!',
+//   },
+// ];
 
 const TaskProvider = ({ children }) => {
-  const [taskList, setTaskList] = useState(initialTasks);
+  const [taskList, setTaskList] = useState([]);
   const [selectedTasks, setSelectedTasks] = useState([]);
 
   //   useEffect(() => {
