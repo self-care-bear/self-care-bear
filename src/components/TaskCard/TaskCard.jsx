@@ -39,19 +39,33 @@ export default function TaskCard({
     // setTaskList(updatedTaskList);
     setIsEditing(false);
   };
+
   const handleSelect = () => {
     setSelectedTasks((prevState) => [...prevState, task]);
   };
+
   return (
-    <div className="task-card" onClick={handleExpand}>
-      <h3>{task.task}</h3>
-      <button onClick={handleSelect}>Add Task</button>
-      {isExpanded && !isEditing && (
-        <>
-          <p>{task.task_description}</p>
-          <button onClick={handleDelete}>delete task</button>
-          <button onClick={() => setIsEditing(true)}>edit task</button>
-        </>
+    <div className="task-card">
+      <h3 className="task-card_title">{task.task}</h3>
+      {isExpanded && <p>{task.task_description}</p>}
+      <div className="task-card_buttons">
+        {isExpanded && !isEditing && (
+          <>
+            <button onClick={handleDelete}>Delete</button>
+            <button onClick={() => setIsEditing(true)}>Edit</button>
+          </>
+        )}
+        {!isEditing && <button onClick={handleSelect}>Add to Tasks</button>}
+      </div>
+      {!isExpanded && (
+        <p className="task-card_arrow" onClick={handleExpand}>
+          ▼
+        </p>
+      )}
+      {isExpanded && (
+        <p className="task-card_arrow" onClick={handleExpand}>
+          ▲
+        </p>
       )}
       {isEditing && (
         <>

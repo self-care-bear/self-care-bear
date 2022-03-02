@@ -1,34 +1,50 @@
-import {
-  getCreatedTasks,
-  getPresetTasks,
-  createTask,
-} from '../../services/tasks';
+import { getCreatedTasks, createTask } from '../../services/tasks';
 import { useEffect, useState } from 'react';
 import { useUser } from '../../context/UserContext';
 import TaskCard from '../../components/TaskCard/TaskCard';
 import { v4 as uuid } from 'uuid';
 import './Tasks.css';
+import { useHistory } from 'react-router-dom';
 
 export default function TaskSelector() {
   const { user } = useUser();
+  const initialTasks = [
+    {
+      task_id: uuid(),
+      task: 'Stretch',
+      task_description: 'Do a yoga practice!',
+    },
+    {
+      task_id: uuid(),
+      task: 'Eat a vegebil',
+      task_description: 'Eat a carrot!',
+    },
+    {
+      task_id: uuid(),
+      task: 'Pet your cat',
+      task_description: 'And kiss it, too!',
+    },
+  ];
   const [loading, setLoading] = useState(true);
-  const [taskList, setTaskList] = useState([]);
+  const [taskList, setTaskList] = useState(initialTasks);
   const [newTask, setNewTask] = useState('');
   const [newTaskDesc, setNewTaskDesc] = useState('');
   const [selectedTasks, setSelectedTasks] = useState([]);
+  const history = useHistory();
 
   useEffect(() => {
     const fetchCreatedData = async () => {
       const createdData = await getCreatedTasks(user.id);
       setTaskList((prevState) => [...prevState, ...createdData]);
-    };
-    const fetchPresetData = async () => {
-      const presetData = await getPresetTasks();
-      setTaskList((prevState) => [...prevState, ...presetData]);
       setLoading(false);
     };
+    // const fetchPresetData = async () => {
+    //   const presetData = await getPresetTasks();
+    //   setTaskList((prevState) => [...prevState, ...presetData]);
+    //   setLoading(false);
+    // };
     fetchCreatedData();
-    fetchPresetData();
+    // fetchPresetData();
   }, []);
 
   const handleSubmit = async (e) => {
@@ -41,6 +57,12 @@ export default function TaskSelector() {
   };
 
   if (loading) return <span>Loading...</span>;
+
+  if (selectedTasks.length === 5) {
+    setTimeout(() => {
+      history.push('/profile');
+    }, 1000);
+  }
 
   return (
     <div className="task-selector">
@@ -77,10 +99,10 @@ export default function TaskSelector() {
             />
           );
         })}
-        {selectedTasks.map((task) => {
-          return <p key={uuid()}>{task.task}</p>;
-        })}
       </div>
+      {selectedTasks.map((task) => {
+        return <p key={uuid()}>{task.task}</p>;
+      })}
     </div>
   );
 }
