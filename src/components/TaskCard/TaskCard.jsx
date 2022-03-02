@@ -60,8 +60,8 @@ export default function TaskCard({ task }) {
       <div className="task-card_buttons">
         {isExpanded && !isEditing && (
           <>
-            <button onClick={handleDelete}>Delete</button>
             <button onClick={() => setIsEditing(true)}>Edit</button>
+            <button onClick={handleDelete}>Delete</button>
           </>
         )}
         {!isEditing && <button onClick={handleSelect}>Add to Tasks</button>}
