@@ -47,7 +47,8 @@ export default function TaskCard({ task }) {
       user_id: user.id,
       user_name: profile.name,
       bear: profile.bear,
-      task_list: [...selectedTasks],
+      task_list: '',
+      textarray: [...selectedTasks],
     });
     console.log('response', response);
     setProfile(response);
