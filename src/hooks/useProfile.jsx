@@ -18,7 +18,7 @@ export const useProfile = () => {
     const fetchProfile = async () => {
       try {
         const response = await getProfileById(user.id);
-
+        console.log(response);
         setProfile(response);
       } catch (error) {
         console.log('error', error);
