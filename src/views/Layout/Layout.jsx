@@ -1,13 +1,14 @@
+import { useUser } from '../../context/UserContext';
 import Header from './Header/Header';
-// import Footer from './Footer/Footer';
 import './Layout.css';
 
 export default function Layout({ children }) {
+  const { user } = useUser();
   return (
     <div className="layout">
-      <Header />
+      {user.email && <Header />}
+
       <main>{children}</main>
-      {/* <Footer /> */}
     </div>
   );
 }
