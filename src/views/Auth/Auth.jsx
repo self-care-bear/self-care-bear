@@ -37,31 +37,33 @@ export default function Auth({ isSigningUp = false }) {
       </h4>
       <form className="auth" onSubmit={handleAuth}>
         <section>
-          <label htmlFor="email">Email: </label>
-          <input
-            id="email"
-            type="email"
-            name="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
+          <label>
+            Email:
+            <input
+              id="email"
+              type="email"
+              name="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </label>
         </section>
         <section>
-          <label htmlFor="password">Password: </label>
-          <input
-            id="password"
-            type="password"
-            name="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+          <label>
+            Password:
+            <input
+              id="password"
+              type="password"
+              name="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </label>
         </section>
         <button type="submit">Go</button>
       </form>
       <div className="auth-container_links">
-        <Link to="/signin">Sign-in</Link>
-        or
-        <Link to="/signup">Sign-up</Link>
+        <Link to="/signin">Sign-in</Link>|<Link to="/signup">Sign-up</Link>
       </div>
     </div>
   );
