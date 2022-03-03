@@ -32,9 +32,10 @@
 }
 
 .about h1 {
+  font-family: Montserrat;
+  font-weight: 400;
   color: #b7210d;
-  display: flex;
-  justify-content: center;
+  text-align: center;
 }
 
 .desc-container {
