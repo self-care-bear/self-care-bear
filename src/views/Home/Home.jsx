@@ -6,10 +6,13 @@ export default function Home() {
   return (
     <div className="home-container">
       <h3>
-        Welcome! A place where you can start building a morning routine full of
-        self-care.
+        An app that cares about you and wants you to care for yourself, this
+        site exists to help you create your ideal morning routine.
       </h3>
-      <h3>Take care of your buddy like you’d take care of yourself.</h3>
+      <h3>
+        Start your day off on the right foot with your Self Care Bear, and take
+        care of your buddy like you’d take care of yourself.
+      </h3>
       <img className="home-container_image" src={Bear} alt="brown bear" />
       <div className="home-container_links">
         <Link to="/signin">Sign-in</Link>

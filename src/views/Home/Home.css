@@ -5,10 +5,12 @@
   justify-content: center;
   gap: 2vh;
   margin: 8vh;
+  text-align: center;
 }
 
 .home-container h3 {
   margin: 0;
+  width: 60%;
 }
 
 .home-container_image {

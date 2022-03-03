@@ -18,7 +18,7 @@ export default function Header() {
       {user.email && (
         <section className="header-controls">
           <div className="header-controls_links">
-            <Link to="/profile/tasks">Tasks</Link>
+            <Link to="/profile/tasks">Habits</Link>
             <Link to="/profile">Profile</Link>
             <Link to="/about">About</Link>
           </div>

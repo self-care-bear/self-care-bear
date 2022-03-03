@@ -32,8 +32,8 @@ export default function Auth({ isSigningUp = false }) {
     <div className="auth-container">
       <h4>
         {isSigningUp
-          ? 'Welcome! Create an account.'
-          : 'Welcome back! Please sign in.'}
+          ? "Welcome! Let's create your account."
+          : "Welcome back! Let's start your day."}
       </h4>
       <form className="auth" onSubmit={handleAuth}>
         <section>
@@ -56,7 +56,7 @@ export default function Auth({ isSigningUp = false }) {
             onChange={(e) => setPassword(e.target.value)}
           />
         </section>
-        <button type="submit">Save</button>
+        <button type="submit">Go</button>
       </form>
       <div className="auth-container_links">
         <Link to="/signin">Sign-in</Link>

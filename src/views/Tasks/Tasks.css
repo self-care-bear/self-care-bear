@@ -5,6 +5,11 @@
   margin-top: 5vh;
 }
 
+.task-selector_copy {
+  width: 60%;
+  text-align: center;
+}
+
 .task-selector_form {
   display: flex;
   flex-direction: column;
