@@ -16,14 +16,6 @@ export default function Header() {
     <header>
       <h1>Self Care Bear</h1>
       {user.email && (
-<<<<<<< HEAD
-        <div className="header-controls">
-          <span>You're signed in as {user.email}</span>
-          <button onClick={handleLogout}>log out</button>
-          <Link to="/profile/tasks">Tasks</Link>
-          <Link to="/profile">Profile</Link>
-        </div>
-=======
         <section className="header-controls">
           <div className="header-controls_links">
             <Link to="/profile/tasks">Habits</Link>
@@ -35,7 +27,6 @@ export default function Header() {
             <button onClick={handleLogout}>log out</button>
           </div>
         </section>
->>>>>>> 2d21b53782ff79554cef87cb5616bb360266787e
       )}
     </header>
   );
