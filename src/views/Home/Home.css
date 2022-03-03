@@ -11,6 +11,10 @@
   margin: 0;
 }
 
+.home-container_image {
+  height: 30vh;
+}
+
 .home-container_links {
   display: flex;
   gap: 1vw;
