@@ -69,12 +69,22 @@ export default function TaskSelector() {
 
   return (
     <div className="task-selector">
-      <section className="task-selector_copy">
-        <p>
-          A foundational practice in self-care is creating a routine that takes
-          care of you. So, think about the habits that best support your care.
+      <h1>Habit Builder</h1>
+      {
+        <p className="task-selector_counter">
+          You have <span>{habitsLeft}</span> habits to set for today.
         </p>
-        <div>
+      }
+      <section className="task-selector_copy">
+        <div className="task-selector_intro">
+          <p>
+            A foundational practice in self-care is creating a routine that
+            takes care of you. So, think about the habits that best support your
+            care. Add as many habits as you want to your profile, but each day
+            we’ll ask you to focus on 5. When you’re ready, set today’s habits!
+          </p>
+        </div>
+        <div className="task-selector_dropdown">
           <p>Stuck on where to begin? Here are some ideas to get started:</p>
           {!isExpanded && (
             <p className="task-card_arrow" onClick={handleExpand}>
@@ -83,35 +93,32 @@ export default function TaskSelector() {
           )}
           {isExpanded && (
             <>
-              <h3>Meditate for 10 minutes</h3>
-              <p>
-                A meditation practice can help create a sense of calm, peace,
-                and balance - something we could all use more of!
-              </p>
-              <h3>Drink a glass of water</h3>
-              <p>
-                It can be hard to remember to drink an adequate amount of water
-                during the day, so start your day with a big glass! Your body
-                will thank you!
-              </p>
-              <h3>Step outside</h3>
-              <p>
-                We’re in front of our screens so much, stepping outside in the
-                morning - try building the routine of stepping outside for a big
-                breath of air in the morning. Go for a walk if you have the
-                energy!
-              </p>
+              <section className="task-selector_prompts">
+                <h3>Meditate for 10 minutes</h3>
+                <p>
+                  A meditation practice can help create a sense of calm, peace,
+                  and balance - something we could all use more of!
+                </p>
+                <h3>Drink a glass of water</h3>
+                <p>
+                  It can be hard to remember to drink an adequate amount of
+                  water during the day, so start your day with a big glass! Your
+                  body will thank you!
+                </p>
+                <h3>Step outside</h3>
+                <p>
+                  We’re in front of our screens so much, stepping outside in the
+                  morning - try building the routine of stepping outside for a
+                  big breath of air in the morning. Go for a walk if you have
+                  the energy!
+                </p>
+              </section>
               <p className="task-card_arrow" onClick={handleExpand}>
                 ▲
               </p>
             </>
           )}
         </div>
-        <p>
-          Add as many habits as you want to your profile, but each day we’ll ask
-          you to focus on 5 to build your morning routine. When you’re ready,
-          set today’s habits!
-        </p>
       </section>
       <form className="task-selector_form" onSubmit={handleSubmit}>
         <label htmlFor="newTask">Habit:</label>
@@ -134,7 +141,6 @@ export default function TaskSelector() {
         />
         <button type="submit">Create Habit</button>
       </form>
-      {<p>You have {habitsLeft} habits to set for today.</p>}
       <div className="card-container">
         {taskList.map((task) => {
           return (

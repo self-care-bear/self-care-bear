@@ -5,9 +5,60 @@
   margin-top: 5vh;
 }
 
+.task-selector h1 {
+  font-family: Montserrat;
+  font-weight: 400;
+  margin: 0;
+}
+
+.task-selector_counter {
+  font-family: Montserrat;
+  color: #b7210d;
+  font-size: 1rem;
+  margin-top: 1vh;
+}
+
+.task-selector_counter span {
+  font-weight: bold;
+}
+
 .task-selector_copy {
-  width: 60%;
+  font-size: 0.9rem;
+  width: 50%;
+}
+
+.task-selector_intro {
+  /* display: flex; */
+  /* text-align: justify; */
+  gap: 2vw;
+}
+
+.task-selector_dropdown {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
   text-align: center;
+  width: 40vw;
+  background-color: #fdfffc98;
+  padding: 3vh 1vh 2vh 1vh;
+  border-radius: 35px;
+  color: #376d5f;
+}
+
+.task-selector_prompts {
+  margin: 5vh 0;
+}
+
+.task-selector_dropdown p {
+  margin: 0;
+}
+
+.task-selector_dropdown h3 {
+  margin: 0;
+  font-size: 1rem;
+  text-decoration: underline;
 }
 
 .task-selector_form {

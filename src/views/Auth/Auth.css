@@ -28,13 +28,6 @@
   margin-top: 3vh;
 }
 
-.auth-container input {
-  border: 0;
-  border-radius: 20px;
-  padding: 5px;
-  margin: 5px;
-}
-
 .auth-container form {
   display: flex;
   flex-direction: column;
