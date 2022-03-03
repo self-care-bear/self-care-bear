@@ -8,7 +8,7 @@ export default function Auth({ isSigningUp = false }) {
   const { setUser } = useUser();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState(null);
+  const [error, setError] = useState('');
   const history = useHistory();
 
   const handleAuth = async (e) => {
@@ -16,17 +16,17 @@ export default function Auth({ isSigningUp = false }) {
     try {
       if (isSigningUp) {
         const response = await signUpUser(email, password);
-        console.log('response', response);
+        setError(response.error.message);
         setUser({ id: response.user.id, email: response.user.email });
         history.replace('/profile/tasks');
       } else {
         const response = await signInUser(email, password);
-        console.log('response', response);
+        setError(response.error.message);
         setUser({ id: response.user.id, email: response.user.email });
         history.replace('/profile/tasks');
       }
-    } catch (error) {
-      throw error;
+    } catch (err) {
+      throw new Error(err);
     }
   };
   return (
@@ -66,7 +66,7 @@ export default function Auth({ isSigningUp = false }) {
       <div className="auth-container_links">
         <Link to="/signin">Sign-in</Link>|<Link to="/signup">Sign-up</Link>
       </div>
-      {error && <p>{error}</p>}
+      {error && <p style={{ color: '#b7210d' }}>{error}</p>}
     </div>
   );
 }
