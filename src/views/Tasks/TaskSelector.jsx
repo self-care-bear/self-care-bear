@@ -70,11 +70,6 @@ export default function TaskSelector() {
   return (
     <div className="task-selector">
       <h1>Habit Builder</h1>
-      {
-        <p className="task-selector_counter">
-          You have <span>{habitsLeft}</span> habits to set for today.
-        </p>
-      }
       <section className="task-selector_copy">
         <div className="task-selector_intro">
           <p>
@@ -85,9 +80,31 @@ export default function TaskSelector() {
           </p>
         </div>
         <div className="task-selector_dropdown">
-          <p>Stuck on where to begin? Here are some ideas to get started:</p>
+          <form className="task-selector_form" onSubmit={handleSubmit}>
+            <label htmlFor="newTask">Habit:</label>
+            <input
+              type="text"
+              id="newTask"
+              name="newTask"
+              value={newTask}
+              placeholder="habit"
+              onChange={(e) => setNewTask(e.target.value)}
+            />
+            <label htmlFor="newTaskDesc">Description:</label>
+            <input
+              type="text"
+              id="newTaskDesc"
+              name="newTaskDesc"
+              value={newTaskDesc}
+              onChange={(e) => setNewTaskDesc(e.target.value)}
+              placeholder="description"
+            />
+            <button type="submit">Create Habit</button>
+          </form>
+          <p>Stuck on where to begin?</p>
+          <p> Here are some ideas to get started:</p>
           {!isExpanded && (
-            <p className="task-card_arrow" onClick={handleExpand}>
+            <p className="arrow" onClick={handleExpand}>
               ▼
             </p>
           )}
@@ -120,40 +137,25 @@ export default function TaskSelector() {
           )}
         </div>
       </section>
-      <form className="task-selector_form" onSubmit={handleSubmit}>
-        <label htmlFor="newTask">Habit:</label>
-        <input
-          type="text"
-          id="newTask"
-          name="newTask"
-          value={newTask}
-          placeholder="habit"
-          onChange={(e) => setNewTask(e.target.value)}
-        />
-        <label htmlFor="newTaskDesc">Description:</label>
-        <input
-          type="text"
-          id="newTaskDesc"
-          name="newTaskDesc"
-          value={newTaskDesc}
-          onChange={(e) => setNewTaskDesc(e.target.value)}
-          placeholder="description"
-        />
-        <button type="submit">Create Habit</button>
-      </form>
-      <div className="card-container">
-        {taskList.map((task) => {
-          return (
-            <TaskCard
-              key={uuid()}
-              onEdit={handleTaskEdit}
-              task={task}
-              isSelected={isSelected}
-              setIsSelected={setIsSelected}
-              handleHabitsLeft={handleHabitsLeft}
-            />
-          );
-        })}
+      {
+        <p className="task-selector_counter">
+          You have <span>{habitsLeft}</span> habits to set for today.
+        </p>
+      }
+      <div className="task-selector_cards">
+        {taskList.length > 0 &&
+          taskList.map((task) => {
+            return (
+              <TaskCard
+                key={uuid()}
+                onEdit={handleTaskEdit}
+                task={task}
+                isSelected={isSelected}
+                setIsSelected={setIsSelected}
+                handleHabitsLeft={handleHabitsLeft}
+              />
+            );
+          })}
       </div>
     </div>
   );

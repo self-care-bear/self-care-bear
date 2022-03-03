@@ -2,9 +2,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: grey;
-  padding: 2vh;
-  border-radius: 10px;
+  background-color: #fefefe7a;
+  padding: 1vh 2vh 2vh 2vh;
+  border-radius: 35px;
   text-transform: capitalize;
   width: 20vw;
   height: auto;
@@ -12,14 +12,16 @@
 
 .task-card_title {
   margin: 1vh;
+  font-weight: 500;
 }
 
 .task-card_buttons {
   display: flex;
-  gap: 1vh;
+  gap: 1vw;
+  font-size: 1.5vh;
 }
 
-.task-card_arrow {
-  cursor: pointer;
-  margin: 2vh 0 0 0;
+.task-card_buttons button {
+  font-size: 1.5vh;
+  margin-top: 1.5vh;
 }

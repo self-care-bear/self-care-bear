@@ -8,14 +8,15 @@
 .task-selector h1 {
   font-family: Montserrat;
   font-weight: 400;
+  color: #b7210d;
   margin: 0;
 }
 
 .task-selector_counter {
   font-family: Montserrat;
   color: #b7210d;
-  font-size: 1rem;
-  margin-top: 1vh;
+  font-size: 1.2rem;
+  margin: 5vh 0;
 }
 
 .task-selector_counter span {
@@ -23,13 +24,16 @@
 }
 
 .task-selector_copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   font-size: 0.9rem;
   width: 50%;
 }
 
 .task-selector_intro {
-  /* display: flex; */
-  /* text-align: justify; */
+  text-align: center;
+  margin-bottom: 2vh;
   gap: 2vw;
 }
 
@@ -38,11 +42,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: auto;
   text-align: center;
-  width: 40vw;
-  background-color: #fdfffc98;
-  padding: 3vh 1vh 2vh 1vh;
+  width: 20vw;
+  background-color: #fefefe7a;
+  padding: 1vh 2vh 2vh 2vh;
   border-radius: 35px;
   color: #376d5f;
 }
@@ -65,12 +68,19 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 3vh 1vh 2vh 1vh;
+  border-radius: 35px;
 }
 
-.card-container {
+.task-selector_form button {
+  font-size: 1.5vh;
+  margin-top: 1.5vh;
+}
+
+.task-selector_cards {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 4vw;
-  margin: 4vw;
+  margin-bottom: 5vh;
 }
