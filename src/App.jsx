@@ -1,5 +1,4 @@
-import './App.css'; /* Global CSS */
-import styles from './App.module.css'; /* CSS Modules */
+import './App.css';
 import Profile from './views/Profile/Profile';
 import Auth from './views/Auth/Auth';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
@@ -9,6 +8,7 @@ import About from './views/About/About';
 import TaskSelector from './views/Tasks/TaskSelector';
 import CreateProfile from './views/Profile/CreateProfile';
 import Completed from './views/Completed/Completed';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
 export default function App() {
   return (
@@ -25,22 +25,18 @@ export default function App() {
             <Route exact path="/signin">
               <Auth />
             </Route>
-            <Route exact path="/profile/create">
+            <PrivateRoute exact path="/profile/create">
               <CreateProfile />
-            </Route>
-            <Route path="/profile/tasks">
+            </PrivateRoute>
+            <PrivateRoute path="/profile/tasks">
               <TaskSelector />
-            </Route>
-            <Route path="/profile/tasks/:id">{/* <TaskDetail /> */}</Route>
-            <Route path="/profile/tasks/:id/edit">
-              {/* <TaskDetail isEditing /> */}
-            </Route>
-            <Route exact path="/profile">
+            </PrivateRoute>
+            <PrivateRoute exact path="/profile">
               <Profile />
-            </Route>
-            <Route path="/profile/completed">
+            </PrivateRoute>
+            <PrivateRoute path="/profile/completed">
               <Completed />
-            </Route>
+            </PrivateRoute>
             <Route path="/about">
               <About />
             </Route>
