@@ -53,9 +53,9 @@ export default function TaskSelector() {
     setNewTaskDesc('');
   };
 
-  const handleExpand = () => {
-    setIsExpanded(!isExpanded);
-  };
+  //   const handleExpand = () => {
+  //     setIsExpanded(!isExpanded);
+  //   };
 
   const handleExpand = () => {
     setIsExpanded(!isExpanded);

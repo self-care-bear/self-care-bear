@@ -4,9 +4,10 @@
   align-items: center;
   justify-content: center;
   gap: 2vh;
-  margin: 20vh auto;
+  margin: 15vh auto;
   text-align: center;
-  width: 30vw;
+  width: 40vw;
+  height: 70vh;
   background-color: #fdfffc98;
   padding: 30px;
   border-radius: 20%;
