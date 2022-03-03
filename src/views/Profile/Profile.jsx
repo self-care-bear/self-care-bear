@@ -4,6 +4,7 @@ import { useProfile } from '../../hooks/useProfile';
 import { useEffect, useState } from 'react';
 import { v4 as uuid } from 'uuid';
 import { getSelectedTasks, updateTask } from '../../services/tasks';
+import { useHistory } from 'react-router-dom';
 import brown1 from '../../assets/brown1.png';
 import brown2 from '../../assets/brown2.png';
 import brown3 from '../../assets/brown3.png';
@@ -20,6 +21,7 @@ import panda6 from '../../assets/panda6.png';
 export default function Profile() {
   const [selectedTasks, setSelectedTasks] = useState([]);
   const [isCompleted, setIsCompleted] = useState({});
+  const history = useHistory();
   const { user } = useUser();
   const { profile, loading } = useProfile();
 
@@ -52,6 +54,9 @@ export default function Profile() {
   };
 
   if (loading) return <p>loading...</p>;
+  if (Object.values(isCompleted).filter((val) => val).length === 5) {
+    history.push('/profile/completed');
+  }
 
   if (!loading && !profile.user_name) return <Redirect to="/profile/create" />;
   return (
