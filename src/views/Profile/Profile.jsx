@@ -10,13 +10,13 @@ import brown2 from '../../assets/brown2.png';
 import brown3 from '../../assets/brown3.png';
 import brown4 from '../../assets/brown4.png';
 import brown5 from '../../assets/brown5.png';
-import brown6 from '../../assets/brown6.png';
+// import brown6 from '../../assets/brown6.png';
 import panda1 from '../../assets/panda1.png';
 import panda2 from '../../assets/panda2.png';
 import panda3 from '../../assets/panda3.png';
 import panda4 from '../../assets/panda4.png';
 import panda5 from '../../assets/panda5.png';
-import panda6 from '../../assets/panda6.png';
+// import panda6 from '../../assets/panda6.png';
 
 export default function Profile() {
   const [selectedTasks, setSelectedTasks] = useState([]);
@@ -54,8 +54,19 @@ export default function Profile() {
   };
 
   if (loading) return <p>loading...</p>;
+
   if (Object.values(isCompleted).filter((val) => val).length === 5) {
-    history.push('/profile/completed');
+    // updateTask(
+    //   task.id,
+    //   task.task,
+    //   task.task_description,
+    //   user.id,
+    //   false,
+    //   false
+    // );
+    setTimeout(() => {
+      history.push('/profile/completed'), 1000;
+    });
   }
 
   if (!loading && !profile.user_name) return <Redirect to="/profile/create" />;
@@ -121,14 +132,14 @@ export default function Profile() {
           Object.values(isCompleted).filter((val) => val).length === 4 && (
             <img src={panda5} />
           ))}
-      {(profile.bear === 'brown' &&
+      {/* {(profile.bear === 'brown' &&
         Object.values(isCompleted).filter((val) => val).length === 5 && (
           <img src={brown6} />
         )) ||
         (profile.bear === 'panda' &&
           Object.values(isCompleted).filter((val) => val).length === 5 && (
             <img src={panda6} />
-          ))}
+          ))} */}
     </div>
   );
 }
