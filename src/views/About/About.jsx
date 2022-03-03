@@ -61,7 +61,6 @@ export default function About() {
             testing (just kidding).
           </p>
         </div>
-
         <div className="bio-card">
           <h4>
             {' '}
