@@ -8,6 +8,7 @@ export default function Auth({ isSigningUp = false }) {
   const { setUser } = useUser();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState(null);
   const history = useHistory();
 
   const handleAuth = async (e) => {
@@ -17,12 +18,12 @@ export default function Auth({ isSigningUp = false }) {
         const response = await signUpUser(email, password);
         console.log('response', response);
         setUser({ id: response.user.id, email: response.user.email });
-        history.replace('/profile');
+        history.replace('/profile/tasks');
       } else {
         const response = await signInUser(email, password);
         console.log('response', response);
         setUser({ id: response.user.id, email: response.user.email });
-        history.replace('/profile');
+        history.replace('/profile/tasks');
       }
     } catch (error) {
       throw error;
@@ -65,6 +66,7 @@ export default function Auth({ isSigningUp = false }) {
       <div className="auth-container_links">
         <Link to="/signin">Sign-in</Link>|<Link to="/signup">Sign-up</Link>
       </div>
+      {error && <p>{error}</p>}
     </div>
   );
 }
