@@ -4,20 +4,27 @@
   align-items: center;
   justify-content: center;
   gap: 2vh;
-  margin: 8vh;
+  margin: 20vh auto;
   text-align: center;
+  width: 30vw;
+  background-color: #fdfffc98;
+  padding: 30px;
+  border-radius: 20%;
+  color: #376d5f;
 }
 
-.home-container h3 {
+.home-container p {
   margin: 0;
-  width: 60%;
+  width: 90%;
 }
 
-.home-container_image {
+.home-container img {
   height: 30vh;
+  margin-bottom: 3vh;
 }
 
 .home-container_links {
   display: flex;
   gap: 1vw;
+  margin-top: 3vh;
 }

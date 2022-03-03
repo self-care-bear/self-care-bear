@@ -9,7 +9,7 @@ import { useTasks } from '../../context/TaskContext';
 
 export default function TaskSelector() {
   const { user } = useUser();
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const { taskList, setTaskList } = useTasks([]);
   const [newTask, setNewTask] = useState('');
   const [newTaskDesc, setNewTaskDesc] = useState('');
@@ -18,20 +18,18 @@ export default function TaskSelector() {
   const [isExpanded, setIsExpanded] = useState(false);
   const [habitsLeft, setHabitsLeft] = useState(5);
 
-  console.log('habitsLeft', habitsLeft);
-
   const handleHabitsLeft = () => {
     setHabitsLeft((prevState) => prevState - 1);
   };
 
-  useEffect(() => {
-    const fetchCreatedData = async () => {
-      const createdData = await getCreatedTasks(user.id);
-      setTaskList((prevState) => [...prevState, ...createdData]);
-      setLoading(false);
-    };
-    fetchCreatedData();
-  }, []);
+  // useEffect(() => {
+  //   const fetchCreatedData = async () => {
+  //     const createdData = await getCreatedTasks(user.id);
+  //     setTaskList((prevState) => [...prevState, ...createdData]);
+  //     setLoading(false);
+  //   };
+  //   fetchCreatedData();
+  // }, []);
 
   const handleTaskEdit = (editTask) => {
     updateTask(editTask.id, editTask.task, editTask.task_description, user.id);
