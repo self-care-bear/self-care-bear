@@ -65,12 +65,13 @@ export default function Profile() {
   if (!loading && !profile.user_name) return <Redirect to="/profile/create" />;
   return (
     <div className="profile-container">
-      <p>
-        Good morning! Here are the habits you want to include in your day!
-        Whenever you’re ready, get started accomplishing them. As you go about
-        your morning, tick off your habits. And don’t forget! You’re taking care
-        of your buddy, too…
-      </p>
+      <section className="profile-container_desc">
+        <h1> Good morning!</h1>
+        Here are the habits you want to include in your day! Whenever you’re
+        ready, get started accomplishing them. As you go about your morning,
+        tick off your habits. And don’t forget! You’re taking care of your
+        buddy, too…
+      </section>
       <section className="profile-container_list">
         {profile.task_list}
         <ul className="profile-tasks">
@@ -91,47 +92,48 @@ export default function Profile() {
             );
           })}
         </ul>
-
-        {(profile.bear === 'brown' &&
-          Object.values(isCompleted).filter((val) => val).length === 0 && (
-            <img src={brown1} />
-          )) ||
-          (profile.bear === 'panda' &&
+        <section className="profile-container_bear">
+          {(profile.bear === 'brown' &&
             Object.values(isCompleted).filter((val) => val).length === 0 && (
-              <img src={panda1} />
-            ))}
-        {(profile.bear === 'brown' &&
-          Object.values(isCompleted).filter((val) => val).length === 1 && (
-            <img src={brown2} />
-          )) ||
-          (profile.bear === 'panda' &&
+              <img src={brown1} />
+            )) ||
+            (profile.bear === 'panda' &&
+              Object.values(isCompleted).filter((val) => val).length === 0 && (
+                <img src={panda1} />
+              ))}
+          {(profile.bear === 'brown' &&
             Object.values(isCompleted).filter((val) => val).length === 1 && (
-              <img src={panda2} />
-            ))}
-        {(profile.bear === 'brown' &&
-          Object.values(isCompleted).filter((val) => val).length === 2 && (
-            <img src={brown3} />
-          )) ||
-          (profile.bear === 'panda' &&
+              <img src={brown2} />
+            )) ||
+            (profile.bear === 'panda' &&
+              Object.values(isCompleted).filter((val) => val).length === 1 && (
+                <img src={panda2} />
+              ))}
+          {(profile.bear === 'brown' &&
             Object.values(isCompleted).filter((val) => val).length === 2 && (
-              <img src={panda3} />
-            ))}
-        {(profile.bear === 'brown' &&
-          Object.values(isCompleted).filter((val) => val).length === 3 && (
-            <img src={brown4} />
-          )) ||
-          (profile.bear === 'panda' &&
+              <img src={brown3} />
+            )) ||
+            (profile.bear === 'panda' &&
+              Object.values(isCompleted).filter((val) => val).length === 2 && (
+                <img src={panda3} />
+              ))}
+          {(profile.bear === 'brown' &&
             Object.values(isCompleted).filter((val) => val).length === 3 && (
-              <img src={panda4} />
-            ))}
-        {(profile.bear === 'brown' &&
-          Object.values(isCompleted).filter((val) => val).length === 4 && (
-            <img src={brown5} />
-          )) ||
-          (profile.bear === 'panda' &&
+              <img src={brown4} />
+            )) ||
+            (profile.bear === 'panda' &&
+              Object.values(isCompleted).filter((val) => val).length === 3 && (
+                <img src={panda4} />
+              ))}
+          {(profile.bear === 'brown' &&
             Object.values(isCompleted).filter((val) => val).length === 4 && (
-              <img src={panda5} />
-            ))}
+              <img src={brown5} />
+            )) ||
+            (profile.bear === 'panda' &&
+              Object.values(isCompleted).filter((val) => val).length === 4 && (
+                <img src={panda5} />
+              ))}
+        </section>
       </section>
     </div>
   );
