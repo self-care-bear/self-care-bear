@@ -1,0 +1,7 @@
+.completed-container {
+  display: flex;
+  justify-content: center;
+}
+.completed-container img {
+  width: 50vh;
+}
