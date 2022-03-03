@@ -30,9 +30,10 @@ export default function Completed() {
   return (
     <div className="completed-container">
       <p>
-        Wow, you did it. You completed your entire morning routine! And you got
-        your bear ready for their day! This accomplishment is huge. Pat yourself
-        on the back for building some really meaningful morning habits.
+        Wow, you did it. You completed your entire morning routine! And you got{' '}
+        {profile.user_name} ready for their day! This accomplishment is huge.
+        Pat yourself on the back for building some really meaningful morning
+        habits.
       </p>
       <p>Whenever you’re ready for tomorrow, we’re here for you.</p>
       {(profile.bear === 'brown' && <img src={brown6} />) ||
