@@ -51,6 +51,12 @@ export default function TaskSelector() {
     e.preventDefault();
     const task = await createTask(newTask, newTaskDesc);
     setTaskList((prevState) => [...prevState, task[0]]);
+    setNewTask('');
+    setNewTaskDesc('');
+  };
+
+  const handleExpand = () => {
+    setIsExpanded(!isExpanded);
   };
 
   const handleExpand = () => {
