@@ -1,7 +1,16 @@
 .completed-container {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
 }
+
+.completed-container p {
+  width: 60%;
+  text-align: center;
+}
+
 .completed-container img {
-  width: 50vh;
+  width: 30vh;
+  margin-bottom: 6vh;
 }

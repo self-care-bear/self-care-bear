@@ -1,11 +1,22 @@
-.profile {
+.profile-container {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
   margin-top: 5vh;
 }
 
-.profile img {
-  height: 25vh;
+.profile-container p {
+  width: 60%;
+}
+
+.profile-container img {
+  height: 30vh;
+}
+
+.profile-container_list {
+  display: flex;
+  gap: 6vw;
 }
 
 .create-container {
@@ -13,6 +24,7 @@
   flex-direction: column;
   align-items: center;
   gap: 1vh;
+  margin-top: 5vh;
 }
 
 .create-container_form {
@@ -20,6 +32,7 @@
   flex-direction: column;
   align-items: center;
   gap: 3vh;
+  margin-top: 2vh;
 }
 
 .create-container_form input[type='radio'] {
@@ -28,6 +41,16 @@
 
 .create-container img {
   width: 200px;
+}
+
+.create-container p {
+  margin: 0;
+  width: 60%;
+  text-align: center;
+}
+
+.create-container_bold {
+  font-weight: bold;
 }
 
 .create-container_bears {
@@ -41,4 +64,8 @@
 
 .profile-tasks_item p {
   margin: 0;
+}
+
+input[type='radio']:checked + img {
+  filter: drop-shadow(5px 5px 5px rgb(50, 52, 51));
 }
