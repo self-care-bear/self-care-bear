@@ -6,6 +6,7 @@ import { useHistory } from 'react-router-dom';
 import { updateTask } from '../../services/tasks';
 import { useTasks } from '../../context/TaskContext';
 import { useUser } from '../../context/UserContext';
+import Confetti from './Confetti';
 
 export default function Completed() {
   const { taskList } = useTasks();
@@ -39,6 +40,7 @@ export default function Completed() {
       {(profile.bear === 'brown' && <img src={brown6} />) ||
         (profile.bear === 'panda' && <img src={panda6} />)}
       <button onClick={handleClick}>Begin Again</button>
+      <Confetti />
     </div>
   );
 }
