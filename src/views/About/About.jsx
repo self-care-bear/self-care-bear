@@ -9,7 +9,8 @@ import github from '../../assets/Github/github.png';
 export default function About() {
   return (
     <div className="about">
-      <div className="dis">
+      <h1>About Us</h1>
+      <div className="desc-container">
         Meet the creators of Self Care Bear! A group of budding software
         engineers who are passionate about self care. We recognize the
         importance of spending time caring for ourselves so that we can care for
@@ -24,16 +25,16 @@ export default function About() {
               Ian Christiansen
             </a>
           </h4>
-          <a href="https://github.com/ian-ch-jsx" target="_blank">
+          {/* <a href="https://github.com/ian-ch-jsx" target="_blank">
             {' '}
             <img className="github" src={github} alt="ian github" />
-          </a>
+          </a> */}
           <img src={ian} alt="ian headshot" />
 
           <p>
-            Software developer transitioning from a background in wildlife
-            education and business management. As lifelong learner with a
-            diverse professional background, I thrive in collaborative
+            Ian is a Software developer transitioning from a background in
+            wildlife education and business management. As lifelong learner with
+            a diverse professional background, I thrive in collaborative
             environments where unique perspectives can come together to solve
             complex problems. I strive to continue to participate in socially
             responsible work through advocacy, teaching, and learning - both
@@ -48,10 +49,10 @@ export default function About() {
               Emma Egstad
             </a>
           </h4>
-          <a href="https://github.com/emmaegstad" target="_blank">
+          {/* <a href="https://github.com/emmaegstad" target="_blank">
             {' '}
             <img className="github" src={github} alt="emma github" />
-          </a>
+          </a> */}
           <img src={emma} alt="emma headshot" />
           <p>
             Emma is a web developer in Portland, OR. Her favorite self-care
@@ -60,6 +61,7 @@ export default function About() {
             testing (just kidding).
           </p>
         </div>
+
         <div className="bio-card">
           <h4>
             {' '}
@@ -67,12 +69,12 @@ export default function About() {
               Libbi Dunham
             </a>
           </h4>
-          <a href="https://github.com/Libbi-Dunham" target="_blank">
+          {/* <a href="https://github.com/Libbi-Dunham" target="_blank">
             <img className="github" src={github} alt="libbi github" />
-          </a>
+          </a> */}
           <img src={libbi} alt="libbi headshot" />
           <p>
-            I am a detailed oriented critical thinking Software Developer. I
+            Libbi is a detailed oriented critical thinking Software Developer. I
             have a background in customer service and administration which has
             given me the skills with team collaboration, problem solving,
             communication, and leadership. My next Software Developer role will
@@ -90,9 +92,9 @@ export default function About() {
               Michelle Nygren
             </a>
           </h4>
-          <a href="https://github.com/michellerenehey" target="_blank">
+          {/* <a href="https://github.com/michellerenehey" target="_blank">
             <img className="github" src={github} alt="michelle github" />
-          </a>
+          </a> */}
           <img src={michelle} alt="michelle headshot" />
           <p>
             Michelle is a software developer in Portland, OR. She tries to

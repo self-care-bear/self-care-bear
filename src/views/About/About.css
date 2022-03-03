@@ -7,6 +7,7 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  margin-top: 30px;
 }
 
 .bio-card {
@@ -14,15 +15,38 @@
   flex-direction: column;
   /* justify-content: center; */
   align-items: center;
-  width: 20vw;
+  width: 350px;
+  /* height: 500px; */
   margin: 10px;
   padding: 10px;
+  background-color: #fdfffc98;
+  border-radius: 40px;
 }
 
 .bio-card img {
-  height: 20vh;
+  height: 300px;
+  border-radius: 10px;
 }
 
 .github {
   height: 2vh;
+}
+
+.about h1 {
+  color: #b7210d;
+  display: flex;
+  justify-content: center;
+}
+
+.desc-container {
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  text-align: center;
+  width: 50vw;
+}
+
+.bio-card p {
+  text-align: center;
+  padding: 10px;
 }
