@@ -7,11 +7,6 @@ export const TaskContext = createContext();
 const TaskProvider = ({ children }) => {
   const [taskList, setTaskList] = useState([]);
   const [selectedTasks, setSelectedTasks] = useState([]);
-
-  //   useEffect(() => {
-  //     console.log('taskList', taskList);
-  //   });
-
   const value = { taskList, setTaskList, selectedTasks, setSelectedTasks };
 
   return <TaskContext.Provider value={value}>{children}</TaskContext.Provider>;
