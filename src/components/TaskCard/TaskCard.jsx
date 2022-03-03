@@ -4,7 +4,13 @@ import { deleteTask, updateTask } from '../../services/tasks';
 import { useTasks } from '../../context/TaskContext';
 import './TaskCard.css';
 
-export default function TaskCard({ task, onEdit, setIsSelected, isSelected }) {
+export default function TaskCard({
+  task,
+  onEdit,
+  setIsSelected,
+  isSelected,
+  handleHabitsLeft,
+}) {
   const { user } = useUser();
   const [isExpanded, setIsExpanded] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
@@ -36,6 +42,7 @@ export default function TaskCard({ task, onEdit, setIsSelected, isSelected }) {
       ...prevState,
       [task.id]: taskSelected,
     }));
+    handleHabitsLeft();
   };
 
   return (
@@ -49,7 +56,7 @@ export default function TaskCard({ task, onEdit, setIsSelected, isSelected }) {
             <button onClick={handleDelete}>Delete</button>
           </>
         )}
-        {!isEditing && <button onClick={handleSelect}>Select Task</button>}
+        {!isEditing && <button onClick={handleSelect}>Set Habit</button>}
       </div>
       {!isExpanded && (
         <p className="task-card_arrow" onClick={handleExpand}>
@@ -85,7 +92,7 @@ export default function TaskCard({ task, onEdit, setIsSelected, isSelected }) {
                 }))
               }
             />
-            <button type="submit">save</button>
+            <button type="submit">Save</button>
           </form>
         </>
       )}

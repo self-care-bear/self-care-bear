@@ -1,7 +1,23 @@
 .completed-container {
   display: flex;
+<<<<<<< HEAD
   justify-content: center;
 }
 .completed-container img {
   width: 50vh;
+=======
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.completed-container p {
+  width: 60%;
+  text-align: center;
+}
+
+.completed-container img {
+  width: 30vh;
+  margin-bottom: 6vh;
+>>>>>>> 2d21b53782ff79554cef87cb5616bb360266787e
 }
