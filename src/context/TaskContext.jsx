@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-import { v4 as uuid } from 'uuid';
-// import { getUser } from '../services/auth';
+import { getCreatedTasks } from '../services/tasks';
+import { useUser } from './UserContext';
 
 export const TaskContext = createContext();
 
@@ -8,6 +8,15 @@ const TaskProvider = ({ children }) => {
   const [taskList, setTaskList] = useState([]);
   const [selectedTasks, setSelectedTasks] = useState([]);
   const value = { taskList, setTaskList, selectedTasks, setSelectedTasks };
+  const { user } = useUser();
+
+  useEffect(() => {
+    const fetchCreatedData = async () => {
+      const createdData = await getCreatedTasks(user.id);
+      setTaskList((prevState) => [...prevState, ...createdData]);
+    };
+    fetchCreatedData();
+  }, []);
 
   return <TaskContext.Provider value={value}>{children}</TaskContext.Provider>;
 };
