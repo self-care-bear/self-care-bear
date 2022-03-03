@@ -26,7 +26,9 @@ export default function Header() {
       </section>
       <section>
         <Link to="/about">About</Link>
-        <Link onClick={handleLogout}>Log Out</Link>
+        <Link to="/" onClick={handleLogout}>
+          Log Out
+        </Link>
       </section>
     </header>
   );
