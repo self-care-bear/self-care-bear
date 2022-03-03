@@ -10,13 +10,13 @@ import brown2 from '../../assets/brown2.png';
 import brown3 from '../../assets/brown3.png';
 import brown4 from '../../assets/brown4.png';
 import brown5 from '../../assets/brown5.png';
-import brown6 from '../../assets/brown6.png';
+// import brown6 from '../../assets/brown6.png';
 import panda1 from '../../assets/panda1.png';
 import panda2 from '../../assets/panda2.png';
 import panda3 from '../../assets/panda3.png';
 import panda4 from '../../assets/panda4.png';
 import panda5 from '../../assets/panda5.png';
-import panda6 from '../../assets/panda6.png';
+// import panda6 from '../../assets/panda6.png';
 
 export default function Profile() {
   const [selectedTasks, setSelectedTasks] = useState([]);
@@ -58,77 +58,91 @@ export default function Profile() {
     history.push('/profile/completed');
   }
 
+  if (Object.values(isCompleted).filter((val) => val).length === 5) {
+    // updateTask(
+    //   task.id,
+    //   task.task,
+    //   task.task_description,
+    //   user.id,
+    //   false,
+    //   false
+    // );
+    setTimeout(() => {
+      history.push('/profile/completed'), 1000;
+    });
+  }
+
   if (!loading && !profile.user_name) return <Redirect to="/profile/create" />;
   return (
-    <div className="profile">
-      {profile.task_list}
-      <ul className="profile-tasks">
-        {selectedTasks.map((task) => {
-          return (
-            <li className="profile-tasks_item" key={uuid()}>
-              <input
-                type="checkbox"
-                checked={
-                  isCompleted[task.id] !== undefined
-                    ? isCompleted[task.id]
-                    : task.is_completed
-                }
-                onChange={() => handleToggle(task)}
-              />
-              <p>{task.task}</p>
-            </li>
-          );
-        })}
-      </ul>
+    <div className="profile-container">
+      <p>
+        Good morning! Here are the habits you want to include in your day!
+        Whenever you’re ready, get started accomplishing them. As you go about
+        your morning, tick off your habits. And don’t forget! You’re taking care
+        of your buddy, too…
+      </p>
+      <section className="profile-container_list">
+        {profile.task_list}
+        <ul className="profile-tasks">
+          {selectedTasks.map((task) => {
+            return (
+              <li className="profile-tasks_item" key={uuid()}>
+                <input
+                  type="checkbox"
+                  checked={
+                    isCompleted[task.id] !== undefined
+                      ? isCompleted[task.id]
+                      : task.is_completed
+                  }
+                  onChange={() => handleToggle(task)}
+                />
+                <p>{task.task}</p>
+              </li>
+            );
+          })}
+        </ul>
 
-      {(profile.bear === 'brown' &&
-        Object.values(isCompleted).filter((val) => val).length === 0 && (
-          <img src={brown1} />
-        )) ||
-        (profile.bear === 'panda' &&
+        {(profile.bear === 'brown' &&
           Object.values(isCompleted).filter((val) => val).length === 0 && (
-            <img src={panda1} />
-          ))}
-      {(profile.bear === 'brown' &&
-        Object.values(isCompleted).filter((val) => val).length === 1 && (
-          <img src={brown2} />
-        )) ||
-        (profile.bear === 'panda' &&
+            <img src={brown1} />
+          )) ||
+          (profile.bear === 'panda' &&
+            Object.values(isCompleted).filter((val) => val).length === 0 && (
+              <img src={panda1} />
+            ))}
+        {(profile.bear === 'brown' &&
           Object.values(isCompleted).filter((val) => val).length === 1 && (
-            <img src={panda2} />
-          ))}
-      {(profile.bear === 'brown' &&
-        Object.values(isCompleted).filter((val) => val).length === 2 && (
-          <img src={brown3} />
-        )) ||
-        (profile.bear === 'panda' &&
+            <img src={brown2} />
+          )) ||
+          (profile.bear === 'panda' &&
+            Object.values(isCompleted).filter((val) => val).length === 1 && (
+              <img src={panda2} />
+            ))}
+        {(profile.bear === 'brown' &&
           Object.values(isCompleted).filter((val) => val).length === 2 && (
-            <img src={panda3} />
-          ))}
-      {(profile.bear === 'brown' &&
-        Object.values(isCompleted).filter((val) => val).length === 3 && (
-          <img src={brown4} />
-        )) ||
-        (profile.bear === 'panda' &&
+            <img src={brown3} />
+          )) ||
+          (profile.bear === 'panda' &&
+            Object.values(isCompleted).filter((val) => val).length === 2 && (
+              <img src={panda3} />
+            ))}
+        {(profile.bear === 'brown' &&
           Object.values(isCompleted).filter((val) => val).length === 3 && (
-            <img src={panda4} />
-          ))}
-      {(profile.bear === 'brown' &&
-        Object.values(isCompleted).filter((val) => val).length === 4 && (
-          <img src={brown5} />
-        )) ||
-        (profile.bear === 'panda' &&
+            <img src={brown4} />
+          )) ||
+          (profile.bear === 'panda' &&
+            Object.values(isCompleted).filter((val) => val).length === 3 && (
+              <img src={panda4} />
+            ))}
+        {(profile.bear === 'brown' &&
           Object.values(isCompleted).filter((val) => val).length === 4 && (
-            <img src={panda5} />
-          ))}
-      {(profile.bear === 'brown' &&
-        Object.values(isCompleted).filter((val) => val).length === 5 && (
-          <img src={brown6} />
-        )) ||
-        (profile.bear === 'panda' &&
-          Object.values(isCompleted).filter((val) => val).length === 5 && (
-            <img src={panda6} />
-          ))}
+            <img src={brown5} />
+          )) ||
+          (profile.bear === 'panda' &&
+            Object.values(isCompleted).filter((val) => val).length === 4 && (
+              <img src={panda5} />
+            ))}
+      </section>
     </div>
   );
 }

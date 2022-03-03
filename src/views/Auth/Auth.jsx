@@ -1,4 +1,4 @@
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import { useState } from 'react';
 import { signInUser, signUpUser } from '../../services/auth';
 import { useUser } from '../../context/UserContext';
@@ -32,8 +32,8 @@ export default function Auth({ isSigningUp = false }) {
     <div className="auth-container">
       <h4>
         {isSigningUp
-          ? 'Welcome! Create an account.'
-          : 'Welcome back! Please sign in.'}
+          ? "Welcome! Let's create your account."
+          : "Welcome back! Let's start your day."}
       </h4>
       <form className="auth" onSubmit={handleAuth}>
         <section>
@@ -56,8 +56,13 @@ export default function Auth({ isSigningUp = false }) {
             onChange={(e) => setPassword(e.target.value)}
           />
         </section>
-        <button type="submit">Save</button>
+        <button type="submit">Go</button>
       </form>
+      <div className="auth-container_links">
+        <Link to="/signin">Sign-in</Link>
+        or
+        <Link to="/signup">Sign-up</Link>
+      </div>
     </div>
   );
 }
