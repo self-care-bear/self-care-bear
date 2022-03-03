@@ -3,12 +3,12 @@ header {
   justify-content: space-around;
   align-items: center;
   background-color: #fefefe7a;
-  padding: 2vh 25vh;
+  padding: 2vh 30vh;
 }
 
 header img {
-  width: 8vw;
-  margin-bottom: 10px;
+  width: 10vw;
+  margin-bottom: 1.5vh;
 }
 
 .header-logo {
@@ -18,5 +18,9 @@ header img {
 }
 
 header a {
-  margin-right: 30px;
+  margin-right: 4vw;
+}
+
+header span {
+  font-size: 0.8rem;
 }

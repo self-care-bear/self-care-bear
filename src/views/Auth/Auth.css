@@ -9,8 +9,8 @@
   width: 20vw;
   height: 20vw;
   background-color: #fdfffc98;
-  padding: 50px;
-  border-radius: 30%;
+  padding: 8vh;
+  border-radius: 10vh;
 }
 
 .auth-container h4 {
@@ -26,13 +26,6 @@
   display: flex;
   gap: 1vw;
   margin-top: 3vh;
-}
-
-.auth-container input {
-  border: 0;
-  border-radius: 20px;
-  padding: 5px;
-  margin: 5px;
 }
 
 .auth-container form {

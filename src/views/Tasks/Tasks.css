@@ -5,21 +5,82 @@
   margin-top: 5vh;
 }
 
+.task-selector h1 {
+  font-family: Montserrat;
+  font-weight: 400;
+  color: #b7210d;
+  margin: 0;
+}
+
+.task-selector_counter {
+  font-family: Montserrat;
+  color: #b7210d;
+  font-size: 1.2rem;
+  margin: 5vh 0;
+}
+
+.task-selector_counter span {
+  font-weight: bold;
+}
+
 .task-selector_copy {
-  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.9rem;
+  width: 50%;
+}
+
+.task-selector_intro {
   text-align: center;
+  margin-bottom: 2vh;
+  gap: 2vw;
+}
+
+.task-selector_dropdown {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 20vw;
+  background-color: #fefefe7a;
+  padding: 1vh 2vh 2vh 2vh;
+  border-radius: 35px;
+  color: #376d5f;
+}
+
+.task-selector_prompts {
+  margin: 5vh 0;
+}
+
+.task-selector_dropdown p {
+  margin: 0;
+}
+
+.task-selector_dropdown h3 {
+  margin: 0;
+  font-size: 1rem;
+  text-decoration: underline;
 }
 
 .task-selector_form {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 3vh 1vh 2vh 1vh;
+  border-radius: 35px;
 }
 
-.card-container {
+.task-selector_form button {
+  font-size: 1.5vh;
+  margin-top: 1.5vh;
+}
+
+.task-selector_cards {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 4vw;
-  margin: 4vw;
+  margin-bottom: 5vh;
 }

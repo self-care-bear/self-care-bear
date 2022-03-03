@@ -59,12 +59,12 @@ export default function TaskCard({
         {!isEditing && <button onClick={handleSelect}>Set Habit</button>}
       </div>
       {!isExpanded && (
-        <p className="task-card_arrow" onClick={handleExpand}>
+        <p className="arrow" onClick={handleExpand}>
           ▼
         </p>
       )}
       {isExpanded && (
-        <p className="task-card_arrow" onClick={handleExpand}>
+        <p className="arrow" onClick={handleExpand}>
           ▲
         </p>
       )}
