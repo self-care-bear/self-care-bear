@@ -133,18 +133,6 @@ export default function Profile() {
             ))}
         {(profile.bear === 'brown' &&
           Object.values(isCompleted).filter((val) => val).length === 4 && (
-<<<<<<< HEAD
-            <img src={panda5} />
-          ))}
-      {/* {(profile.bear === 'brown' &&
-        Object.values(isCompleted).filter((val) => val).length === 5 && (
-          <img src={brown6} />
-        )) ||
-        (profile.bear === 'panda' &&
-          Object.values(isCompleted).filter((val) => val).length === 5 && (
-            <img src={panda6} />
-          ))} */}
-=======
             <img src={brown5} />
           )) ||
           (profile.bear === 'panda' &&
@@ -152,7 +140,6 @@ export default function Profile() {
               <img src={panda5} />
             ))}
       </section>
->>>>>>> 2d21b53782ff79554cef87cb5616bb360266787e
     </div>
   );
 }
