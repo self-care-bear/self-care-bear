@@ -56,7 +56,17 @@ export default function Profile() {
   if (loading) return <p>loading...</p>;
 
   if (Object.values(isCompleted).filter((val) => val).length === 5) {
-    setTimeout(() => history.push('/profile/completed'), 1000);
+    // updateTask(
+    //   task.id,
+    //   task.task,
+    //   task.task_description,
+    //   user.id,
+    //   false,
+    //   false
+    // );
+    setTimeout(() => {
+      history.push('/profile/completed'), 1000;
+    });
   }
 
   if (!loading && !profile.user_name) return <Redirect to="/profile/create" />;

@@ -61,3 +61,21 @@ export async function getCompletedTasks(user_id) {
     .order('created_at', { ascending: false });
   return parseData(request);
 }
+
+// export async function resetCompletedTasks(user_id) {
+//   const request = await client
+//     .from('created_tasks')
+//     .update({ task, task_description, is_selected, is_completed })
+//     .match({ user_id, is_completed: true })
+//     .order('created_at', { ascending: false });
+//   return parseData(request);
+// }
+
+// export async function resetSelectedTasks(user_id) {
+//   const request = await client
+//     .from('created_tasks')
+//     .update({ task, task_description, is_selected, is_completed })
+//     .match({ user_id, is_selected: true })
+//     .order('created_at', { ascending: false });
+//   return parseData(request);
+// }
