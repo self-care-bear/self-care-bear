@@ -2,23 +2,28 @@ import './Completed.css';
 import panda6 from '../../assets/panda6.png';
 import brown6 from '../../assets/brown6.png';
 import { useProfile } from '../../hooks/useProfile';
-<<<<<<< HEAD
-
-export default function Completed() {
-  const { profile } = useProfile();
-
-  return (
-    <div className="completed-container">
-      {(profile.bear === 'brown' && <img src={brown6} />) ||
-        (profile.bear === 'panda' && <img src={panda6} />)}
-=======
 import { useHistory } from 'react-router-dom';
+import { updateTask } from '../../services/tasks';
+import { useTasks } from '../../context/TaskContext';
+import { useUser } from '../../context/UserContext';
 
 export default function Completed() {
+  const { taskList } = useTasks();
   const { profile } = useProfile();
+  const { user } = useUser();
   const history = useHistory();
 
-  const handleClick = () => {
+  const handleClick = async () => {
+    await taskList.map((task) => {
+      updateTask(
+        task.id,
+        task.task,
+        task.task_description,
+        user.id,
+        false,
+        false
+      );
+    });
     history.push('/profile/tasks');
   };
 
@@ -33,7 +38,6 @@ export default function Completed() {
       {(profile.bear === 'brown' && <img src={brown6} />) ||
         (profile.bear === 'panda' && <img src={panda6} />)}
       <button onClick={handleClick}>Begin Again</button>
->>>>>>> 2d21b53782ff79554cef87cb5616bb360266787e
     </div>
   );
 }
