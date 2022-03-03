@@ -1,17 +1,22 @@
 header {
   display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #fefefe7a;
+  padding: 2vh 25vh;
+}
+
+header img {
+  width: 8vw;
+  margin-bottom: 10px;
+}
+
+.header-logo {
+  display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #decdf5;
-  padding: 2vh;
 }
 
-header h1 {
-  font-size: 2rem;
-  margin: 0 0 2vh 0;
-}
-
-.header-controls {
-  display: flex;
-  gap: 2vw;
+header a {
+  margin-right: 30px;
 }

@@ -2,4 +2,53 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  gap: 2vh;
+  margin: 20vh auto;
+  text-align: center;
+  width: 20vw;
+  height: 20vw;
+  background-color: #fdfffc98;
+  padding: 50px;
+  border-radius: 30%;
+}
+
+.auth-container h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.3rem;
+}
+
+.auth-container a {
+  font-size: 1.2rem;
+}
+
+.auth-container_links {
+  display: flex;
+  gap: 1vw;
+  margin-top: 3vh;
+}
+
+.auth-container input {
+  border: 0;
+  border-radius: 20px;
+  padding: 5px;
+  margin: 5px;
+}
+
+.auth-container form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.auth-container label {
+  display: flex;
+  justify-content: space-between;
+}
+
+.auth-container button {
+  width: fit-content;
+  margin-top: 5px;
+  padding: 0px 10px;
 }
