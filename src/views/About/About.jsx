@@ -25,11 +25,11 @@ export default function About() {
               Ian Christiansen
             </a>
           </h4>
-          {/* <a href="https://github.com/ian-ch-jsx" target="_blank">
+          <a href="https://github.com/ian-ch-jsx" target="_blank">
             {' '}
             <img className="github" src={github} alt="ian github" />
-          </a> */}
-          <img src={ian} alt="ian headshot" />
+          </a>
+          <img className="bio-img" src={ian} alt="ian headshot" />
 
           <p>
             Ian is a Software developer transitioning from a background in
@@ -49,11 +49,11 @@ export default function About() {
               Emma Egstad
             </a>
           </h4>
-          {/* <a href="https://github.com/emmaegstad" target="_blank">
+          <a href="https://github.com/emmaegstad" target="_blank">
             {' '}
             <img className="github" src={github} alt="emma github" />
-          </a> */}
-          <img src={emma} alt="emma headshot" />
+          </a>
+          <img className="bio-img" src={emma} alt="emma headshot" />
           <p>
             Emma is a web developer in Portland, OR. Her favorite self-care
             activity is reading a book under ten blankets on a rainy day. In
@@ -69,10 +69,10 @@ export default function About() {
               Libbi Dunham
             </a>
           </h4>
-          {/* <a href="https://github.com/Libbi-Dunham" target="_blank">
+          <a href="https://github.com/Libbi-Dunham" target="_blank">
             <img className="github" src={github} alt="libbi github" />
-          </a> */}
-          <img src={libbi} alt="libbi headshot" />
+          </a>
+          <img className="bio-img" src={libbi} alt="libbi headshot" />
           <p>
             Libbi is a detailed oriented critical thinking Software Developer. I
             have a background in customer service and administration which has
@@ -92,10 +92,10 @@ export default function About() {
               Michelle Nygren
             </a>
           </h4>
-          {/* <a href="https://github.com/michellerenehey" target="_blank">
+          <a href="https://github.com/michellerenehey" target="_blank">
             <img className="github" src={github} alt="michelle github" />
-          </a> */}
-          <img src={michelle} alt="michelle headshot" />
+          </a>
+          <img className="bio-img" src={michelle} alt="michelle headshot" />
           <p>
             Michelle is a software developer in Portland, OR. She tries to
             prioritize self care in all she does, and especially focuses on

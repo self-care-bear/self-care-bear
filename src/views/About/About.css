@@ -13,23 +13,22 @@
 .bio-card {
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   align-items: center;
   width: 350px;
-  /* height: 500px; */
   margin: 10px;
   padding: 10px;
   background-color: #fdfffc98;
   border-radius: 40px;
 }
 
-.bio-card img {
+.bio-img {
   height: 300px;
   border-radius: 10px;
+  margin-top: 10px;
 }
 
-.github {
-  height: 2vh;
+.github img {
+  height: 30px;
 }
 
 .about h1 {
