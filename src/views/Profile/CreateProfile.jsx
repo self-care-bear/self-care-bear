@@ -64,6 +64,7 @@ export default function CreateProfile() {
                 value="brown"
                 checked={bear === 'brown'}
                 onChange={handleChange}
+                required
               />
               <img src={BrownBear} />
             </label>

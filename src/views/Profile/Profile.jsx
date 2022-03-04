@@ -16,6 +16,7 @@ import panda2 from '../../assets/panda2.png';
 import panda3 from '../../assets/panda3.png';
 import panda4 from '../../assets/panda4.png';
 import panda5 from '../../assets/panda5.png';
+import { useTasks } from '../../context/TaskContext';
 
 export default function Profile() {
   const [selectedTasks, setSelectedTasks] = useState([]);
@@ -23,6 +24,7 @@ export default function Profile() {
   const history = useHistory();
   const { user } = useUser();
   const { profile, loading } = useProfile();
+  const { taskList } = useTasks();
 
   useEffect(() => {
     const fetchSelectedTasks = async () => {
@@ -52,18 +54,35 @@ export default function Profile() {
     );
   };
 
-  if (loading) return <p>loading...</p>;
-  if (Object.values(isCompleted).filter((val) => val).length === 5) {
-    history.push('/profile/completed');
-  }
+  // if (loading) return <p>loading...</p>;
+  // if (Object.values(isCompleted).filter((val) => val).length === 5) {
+  //   history.push('/profile/completed');
+  // }
+
+  const handleClear = async () => {
+    await taskList.map((task) => {
+      updateTask(
+        task.id,
+        task.task,
+        task.task_description,
+        user.id,
+        false,
+        false
+      );
+    });
+  };
 
   if (Object.values(isCompleted).filter((val) => val).length === 5) {
     setTimeout(() => {
+      handleClear();
       history.push('/profile/completed'), 1000;
     });
   }
 
+  console.log(selectedTasks);
   if (!loading && !profile.user_name) return <Redirect to="/profile/create" />;
+  if (!loading && selectedTasks.length === 0)
+    return <Redirect to="/profile/tasks" />;
   return (
     <FadeIn transitionDuration="1000">
       <div className="profile-container">
