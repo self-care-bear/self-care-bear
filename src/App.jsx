@@ -1,7 +1,7 @@
 import './App.css';
 import Profile from './views/Profile/Profile';
 import Auth from './views/Auth/Auth';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Layout from './views/Layout/Layout';
 import Home from './views/Home/Home';
 import About from './views/About/About';

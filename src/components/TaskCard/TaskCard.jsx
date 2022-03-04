@@ -15,7 +15,7 @@ export default function TaskCard({
   const [isExpanded, setIsExpanded] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [editTask, setEditTask] = useState(task);
-  const { taskList, setTaskList } = useTasks();
+  const { setTaskList } = useTasks();
 
   const handleDelete = () => {
     deleteTask(task.id);
@@ -59,12 +59,20 @@ export default function TaskCard({
         {!isEditing && <button onClick={handleSelect}>Set Habit</button>}
       </div>
       {!isExpanded && (
-        <p className="arrow" onClick={handleExpand}>
+        <p
+          className="arrow"
+          onClick={handleExpand}
+          aria-label={`expand ${task?.task}`}
+        >
           ▼
         </p>
       )}
       {isExpanded && (
-        <p className="arrow" onClick={handleExpand}>
+        <p
+          className="arrow"
+          onClick={handleExpand}
+          aria-label={`close ${task?.task}`}
+        >
           ▲
         </p>
       )}
@@ -74,7 +82,7 @@ export default function TaskCard({
             <input
               type="text"
               value={editTask.task}
-              placeholder="task"
+              aria-label={`edit ${task?.task} name`}
               onChange={(e) =>
                 setEditTask((prevState) => ({
                   ...prevState,
@@ -85,6 +93,7 @@ export default function TaskCard({
             <input
               type="text"
               value={editTask.task_description}
+              aria-label={`edit ${task?.task} desc`}
               onChange={(e) =>
                 setEditTask((prevState) => ({
                   ...prevState,

@@ -1,6 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { getProfileById } from '../services/profiles';
-import { useEffect } from 'react';
 import { useUser } from '../context/UserContext';
 
 export const useProfile = () => {
@@ -20,12 +19,12 @@ export const useProfile = () => {
         const response = await getProfileById(user.id);
         setProfile(response);
       } catch (error) {
-        console.log('error', error);
       } finally {
         setLoading(false);
       }
     };
     fetchProfile();
   }, []);
+
   return { profile, setProfile, loading };
 };
