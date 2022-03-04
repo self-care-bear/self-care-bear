@@ -7,7 +7,7 @@
 }
 
 .profile-container img {
-  height: 30vh;
+  height: 300px;
 }
 
 .profile-container_list {
@@ -23,12 +23,33 @@
   margin-top: 5vh;
 }
 
+.create-container h1 {
+  font-family: Montserrat;
+  font-weight: 400;
+  color: #b7210d;
+}
+
+.create-container section {
+  width: 50%;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
 .create-container_form {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 3vh;
   margin-top: 2vh;
+  background-color: #fefefe7a;
+  padding: 4vh;
+  border-radius: 35px;
+}
+
+.create-container_form label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .create-container_form input[type='radio'] {

@@ -36,24 +36,24 @@ export default function CreateProfile() {
   };
   return (
     <div className="create-container">
-      <p>
+      <h1>Choose Your Buddy</h1>
+      <section>
         One of our favorite self-care mantras is this: ‘take care of yourself
         like you’d take care of your best friend.’ So, let’s build you a little
-        buddy!
-      </p>
-      <p>
-        To get started,{' '}
-        <span className="create-container_bold">create a profile</span>. Your
-        buddy may look a little disheveled right now, but your routine will help
-        change that.
-      </p>
+        buddy! To get started, create a profile. Your buddy may look a little
+        disheveled right now, but your routine will help change that.
+      </section>
       <form className="create-container_form" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="give your buddy a name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
+        <label>
+          Buddy Name:
+          <input
+            type="text"
+            placeholder="give your buddy a name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+        </label>
         <div className="create-container_bears">
           <label>
             <input
