@@ -6,6 +6,7 @@ import { v4 as uuid } from 'uuid';
 import { getSelectedTasks, updateTask } from '../../services/tasks';
 import { useHistory } from 'react-router-dom';
 import { useTasks } from '../../context/TaskContext';
+import { Link } from 'react-router-dom';
 import FadeIn from 'react-fade-in/lib/FadeIn';
 import brown1 from '../../assets/brown1.png';
 import brown2 from '../../assets/brown2.png';
@@ -76,6 +77,12 @@ export default function Profile() {
   }
 
   if (!loading && !profile.user_name) return <Redirect to="/profile/create" />;
+  const redirectMessage =
+    selectedTasks.length === 0 ? (
+      <Link to="/profile/tasks">Please add some tasks!</Link>
+    ) : (
+      ''
+    );
 
   return (
     <FadeIn transitionDuration="1000">
@@ -92,6 +99,7 @@ export default function Profile() {
         <section className="profile-container_list">
           {profile.task_list}
           <ul className="profile-tasks">
+            {redirectMessage}
             {selectedTasks.map((task) => {
               return (
                 <li className="profile-tasks_item" key={uuid()}>
