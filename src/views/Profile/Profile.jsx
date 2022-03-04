@@ -54,7 +54,6 @@ export default function Profile() {
     );
   };
 
-  // if (loading) return <p>loading...</p>;
   // if (Object.values(isCompleted).filter((val) => val).length === 5) {
   //   history.push('/profile/completed');
   // }
@@ -72,6 +71,7 @@ export default function Profile() {
     });
   };
 
+  if (loading) return <p>loading...</p>;
   if (Object.values(isCompleted).filter((val) => val).length === 5) {
     setTimeout(() => {
       handleClear();
