@@ -5,13 +5,17 @@ import { Link } from 'react-router-dom';
 import './Header.css';
 import logo from '../../../assets/logo.png';
 import FadeIn from 'react-fade-in/lib/FadeIn';
+import { useTasks } from '../../../context/TaskContext';
 
 export default function Header() {
   const history = useHistory();
   const { user, setUser } = useUser();
+  const { setTaskList } = useTasks();
+
   const handleLogout = () => {
     signOutUser();
     setUser({});
+    setTaskList([]);
     history.replace('/');
   };
 
