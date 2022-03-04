@@ -22,15 +22,6 @@ export default function TaskSelector() {
     setHabitsLeft((prevState) => prevState - 1);
   };
 
-  // useEffect(() => {
-  //   const fetchCreatedData = async () => {
-  //     const createdData = await getCreatedTasks(user.id);
-  //     setTaskList((prevState) => [...prevState, ...createdData]);
-  //     setLoading(false);
-  //   };
-  //   fetchCreatedData();
-  // }, []);
-
   const handleTaskEdit = (editTask) => {
     updateTask(editTask.id, editTask.task, editTask.task_description, user.id);
     const updatedTaskList = taskList.map((item) => {
@@ -52,10 +43,6 @@ export default function TaskSelector() {
     setNewTask('');
     setNewTaskDesc('');
   };
-
-  //   const handleExpand = () => {
-  //     setIsExpanded(!isExpanded);
-  //   };
 
   const handleExpand = () => {
     setIsExpanded(!isExpanded);
