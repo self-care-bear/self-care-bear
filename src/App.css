@@ -29,6 +29,17 @@ button:active {
   filter: drop-shadow(4px 4px 3px rgb(50, 52, 51, 0.3));
 }
 
+h1 {
+  font-family: Montserrat;
+  font-weight: 400;
+  color: #b7210d;
+  font-size: 2rem;
+}
+
+p {
+  font-size: 0.9rem;
+}
+
 a {
   font-family: 'Montserrat', sans-serif;
   color: #b7210d;
