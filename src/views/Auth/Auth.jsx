@@ -20,7 +20,7 @@ export default function Auth({ isSigningUp = false }) {
           setError(response.error.message);
         }
         setUser({ id: response.user.id, email: response.user.email });
-        history.replace('/profile/tasks');
+        history.replace('/profile/create');
       } else {
         const response = await signInUser(email, password);
         if (response.error) {
