@@ -6,6 +6,7 @@ import { useHistory } from 'react-router-dom';
 import { updateTask } from '../../services/tasks';
 import { useTasks } from '../../context/TaskContext';
 import { useUser } from '../../context/UserContext';
+import FadeIn from 'react-fade-in/lib/FadeIn';
 import Confetti from './Confetti';
 
 export default function Completed() {
@@ -29,18 +30,23 @@ export default function Completed() {
   };
 
   return (
-    <div className="completed-container">
-      <h1>Wow, you did it!</h1>
-      <p>
-        You completed your entire morning routine! And you got{' '}
-        {profile.user_name} ready for their day! This accomplishment is huge.Pat
-        yourself on the back for building some really meaningful morning habits.
-        Whenever you’re ready for tomorrow, we’re here for you.
-      </p>
-      {(profile.bear === 'brown' && <img src={brown6} />) ||
-        (profile.bear === 'panda' && <img src={panda6} />)}
-      <button onClick={handleClick}>Begin Again</button>
+    <>
+      <FadeIn transitionDuration="1000">
+        <div className="completed-container">
+          <h1>Wow, you did it!</h1>
+          <p>
+            You completed your entire morning routine! And you got{' '}
+            {profile.user_name} ready for their day! This accomplishment is
+            huge.Pat yourself on the back for building some really meaningful
+            morning habits. Whenever you’re ready for tomorrow, we’re here for
+            you.
+          </p>
+          {(profile.bear === 'brown' && <img src={brown6} />) ||
+            (profile.bear === 'panda' && <img src={panda6} />)}
+          <button onClick={handleClick}>Begin Again</button>
+        </div>
+      </FadeIn>
       <Confetti />
-    </div>
+    </>
   );
 }

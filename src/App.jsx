@@ -13,36 +13,34 @@ import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 export default function App() {
   return (
     <div className="App">
-      <BrowserRouter>
-        <Layout>
-          <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route exact path="/signup">
-              <Auth isSigningUp />
-            </Route>
-            <Route exact path="/signin">
-              <Auth />
-            </Route>
-            <PrivateRoute exact path="/profile/create">
-              <CreateProfile />
-            </PrivateRoute>
-            <PrivateRoute path="/profile/tasks">
-              <TaskSelector />
-            </PrivateRoute>
-            <PrivateRoute exact path="/profile">
-              <Profile />
-            </PrivateRoute>
-            <PrivateRoute path="/profile/completed">
-              <Completed />
-            </PrivateRoute>
-            <Route path="/about">
-              <About />
-            </Route>
-          </Switch>
-        </Layout>
-      </BrowserRouter>
+      <Layout>
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route exact path="/signup">
+            <Auth isSigningUp />
+          </Route>
+          <Route exact path="/signin">
+            <Auth />
+          </Route>
+          <PrivateRoute exact path="/profile/create">
+            <CreateProfile />
+          </PrivateRoute>
+          <PrivateRoute path="/profile/tasks">
+            <TaskSelector />
+          </PrivateRoute>
+          <PrivateRoute exact path="/profile">
+            <Profile />
+          </PrivateRoute>
+          <PrivateRoute path="/profile/completed">
+            <Completed />
+          </PrivateRoute>
+          <Route path="/about">
+            <About />
+          </Route>
+        </Switch>
+      </Layout>
     </div>
   );
 }

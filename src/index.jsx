@@ -5,12 +5,15 @@ import { UserProvider } from '../src/context/UserContext';
 
 import './style.css';
 import { TaskProvider } from './context/TaskContext';
+import { BrowserRouter } from 'react-router-dom';
 
 render(
   <React.StrictMode>
     <UserProvider>
       <TaskProvider>
-        <App />
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
       </TaskProvider>
     </UserProvider>
   </React.StrictMode>,
