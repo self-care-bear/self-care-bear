@@ -7,9 +7,13 @@ import { getSelectedTasks, updateTask } from '../../services/tasks';
 import { useHistory } from 'react-router-dom';
 import { useTasks } from '../../context/TaskContext';
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> f6ac3cfdbbeb5889d884348d4f350c3d407def9c
+=======
+
+>>>>>>> 12ace4083bdebe16443fd00759c6b4b24637ad41
 import { Link } from 'react-router-dom';
 import FadeIn from 'react-fade-in/lib/FadeIn';
 import brown1 from '../../assets/brown1.png';
@@ -81,6 +85,7 @@ export default function Profile() {
   }
 
   if (!loading && !profile.user_name) return <Redirect to="/profile/create" />;
+
   const redirectMessage =
     selectedTasks.length === 0 ? (
       <Link to="/profile/tasks">Please add some tasks!</Link>
