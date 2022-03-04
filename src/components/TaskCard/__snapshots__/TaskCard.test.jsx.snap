@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`taskcard renders 1`] = `
+<div>
+  <div
+    class="task-card"
+  >
+    <h3
+      class="task-card_title"
+    />
+    <div
+      class="task-card_buttons"
+    >
+      <button>
+        Set Habit
+      </button>
+    </div>
+    <p
+      aria-label="expand undefined"
+      class="arrow"
+    >
+      ▼
+    </p>
+  </div>
+</div>
+`;

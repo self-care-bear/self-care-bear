@@ -1,6 +1,65 @@
-/*
-  Example of using Tailwind classes in a CSS file:
-*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;700&family=Roboto+Mono:wght@100;200;300;400&display=swap');
+
 body {
-  @apply bg-slate-800;
+  color: #376d5f;
+  background-color: #bbddd4;
+  margin: 0;
+  font-family: 'Roboto Mono', sans-serif;
+}
+
+.App {
+  display: flex;
+  margin: auto;
+  justify-content: center;
+}
+
+button {
+  font-family: 'Montserrat', sans-serif;
+  color: #376d5f;
+
+  border: 0;
+  background-color: #fefefe;
+  border-radius: 10px;
+  padding: 1vh;
+  font-size: 1.2rem;
+  filter: drop-shadow(2px 2px 3px rgb(50, 52, 51, 0.3));
+}
+
+button:active {
+  filter: drop-shadow(4px 4px 3px rgb(50, 52, 51, 0.3));
+}
+
+h1 {
+  font-family: Montserrat;
+  font-weight: 400;
+  color: #b7210d;
+  font-size: 2rem;
+}
+
+p {
+  font-size: 0.9rem;
+}
+
+a {
+  font-family: 'Montserrat', sans-serif;
+  color: #b7210d;
+  font-size: 1.2rem;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #b7210d;
+}
+
+input {
+  border: 0;
+  border-radius: 20px;
+  padding: 5px;
+  margin: 5px;
+}
+
+.arrow {
+  color: #b7210d;
+  cursor: pointer;
+  margin: 2vh 0 0 0;
 }

@@ -1,0 +1,31 @@
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2vh;
+  margin: 15vh auto;
+  text-align: center;
+  width: 40vw;
+  height: 70vh;
+  background-color: #fdfffc98;
+  padding: 30px;
+  border-radius: 20%;
+  color: #376d5f;
+}
+
+.home-container p {
+  margin: 0;
+  width: 90%;
+}
+
+.home-container img {
+  height: 30vh;
+  margin-bottom: 3vh;
+}
+
+.home-container_links {
+  display: flex;
+  gap: 1vw;
+  margin-top: 3vh;
+}
