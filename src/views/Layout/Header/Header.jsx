@@ -1,11 +1,11 @@
+import './Header.css';
 import { useUser } from '../../../context/UserContext';
 import { signOutUser } from '../../../services/auth';
 import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import './Header.css';
+import { useTasks } from '../../../context/TaskContext';
 import logo from '../../../assets/logo.png';
 import FadeIn from 'react-fade-in/lib/FadeIn';
-import { useTasks } from '../../../context/TaskContext';
 
 export default function Header() {
   const history = useHistory();

@@ -1,8 +1,8 @@
 import './Completed.css';
 import panda6 from '../../assets/panda6.png';
 import brown6 from '../../assets/brown6.png';
-import { useProfile } from '../../hooks/useProfile';
 import { useHistory } from 'react-router-dom';
+import { useProfile } from '../../hooks/useProfile';
 import { updateTask } from '../../services/tasks';
 import { useTasks } from '../../context/TaskContext';
 import { useUser } from '../../context/UserContext';

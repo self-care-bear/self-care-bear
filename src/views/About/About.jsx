@@ -1,4 +1,3 @@
-import React from 'react';
 import './About.css';
 import FadeIn from 'react-fade-in/lib/FadeIn';
 import ian from '../../assets/Headshots/ian.png';
@@ -10,9 +9,9 @@ import github from '../../assets/Github/github.png';
 export default function About() {
   return (
     <FadeIn transitionDuration="1000">
-      <div className="about">
+      <div className="about-container">
         <h1>About Us</h1>
-        <div className="desc-container">
+        <div className="about-container_desc">
           <p>
             Meet the creators of Self Care Bear! A group of budding software
             engineers who are passionate about self care. We recognize the
@@ -22,7 +21,7 @@ export default function About() {
           </p>
         </div>
         <div className="bio-container">
-          <div className="bio-card">
+          <div className="bio-container_card">
             <h4>
               <a href="https://www.linkedin.com/in/ianchjsx/" target="_blank">
                 Ian Christiansen
@@ -36,14 +35,14 @@ export default function About() {
             <p>
               Ian is a Software developer transitioning from a background in
               wildlife education and business management. As lifelong learner
-              with a diverse professional background, I thrive in collaborative
-              environments where unique perspectives can come together to solve
-              complex problems. I strive to continue to participate in socially
-              responsible work through advocacy, teaching, and learning - both
-              professionally and personally.
+              with a diverse professional background, he thrives in
+              collaborative environments where unique perspectives can come
+              together to solve complex problems. Ian strives to continue to
+              participate in socially responsible work through advocacy,
+              teaching, and learning - both professionally and personally.
             </p>
           </div>
-          <div className="bio-card">
+          <div className="bio-container_card">
             <h4>
               <a href="https://www.linkedin.com/in/emmaegstad/" target="_blank">
                 Emma Egstad
@@ -60,7 +59,7 @@ export default function About() {
               React testing (just kidding).
             </p>
           </div>
-          <div className="bio-card">
+          <div className="bio-container_card">
             <h4>
               <a
                 href="https://www.linkedin.com/in/libbi-dunham/"
@@ -82,7 +81,7 @@ export default function About() {
               enjoys learning new technical knowledge.
             </p>
           </div>
-          <div className="bio-card">
+          <div className="bio-container_card">
             <h4>
               <a
                 href="https://www.linkedin.com/in/michellenygren/"

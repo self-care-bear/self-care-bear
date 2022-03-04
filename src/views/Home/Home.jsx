@@ -1,6 +1,5 @@
 import './Home.css';
 import { Link } from 'react-router-dom';
-import Bear from '../../assets/brown1.png';
 import logo from '../../assets/logo.png';
 import FadeIn from 'react-fade-in/lib/FadeIn';
 

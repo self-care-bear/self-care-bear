@@ -1,7 +1,6 @@
 import { client, parseData } from './client';
 
 export async function getProfileById(id) {
-  console.log('id', id);
   const request = await client
     .from('profile')
     .select('*')
