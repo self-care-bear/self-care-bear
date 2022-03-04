@@ -26,7 +26,6 @@ const server = setupServer(
   ),
   rest.get(
     'https://qtcmkfsjelfhlmlkamgh.supabase.co/rest/v1/created_tasks',
-
     (req, res, ctx) => {
       return res(
         ctx.json([
@@ -45,8 +44,8 @@ const server = setupServer(
   ),
   rest.post(
     'https://qtcmkfsjelfhlmlkamgh.supabase.co/rest/v1/created_tasks',
-
     (req, res, ctx) => {
+      console.log('REQ', req.body);
       return res(
         ctx.json([
           {
@@ -68,7 +67,7 @@ beforeAll(() => server.listen());
 
 afterAll(() => server.close());
 
-test.only('users do stuff', async () => {
+test('users do stuff', async () => {
   render(
     <UserProvider mockUser={{ id: 1, email: 'email@email.com' }}>
       <TaskProvider>
@@ -98,9 +97,8 @@ test.only('users do stuff', async () => {
   userEvent.type(taskName, 'task');
   userEvent.type(taskDesc, 'desc');
   userEvent.click(create);
-  // screen.debug();
 
-  // const newTask = await screen.findByRole('heading', {
-  //   name: /task/i,
-  // });
+  const newTask = await screen.findByRole('heading', {
+    name: /task/i,
+  });
 });

@@ -1,16 +1,16 @@
+import './Profile.css';
 import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useProfile } from '../../hooks/useProfile';
 import { useUser } from '../../context/UserContext';
 import BrownBear from '../../assets/brown2.png';
 import PandaBear from '../../assets/panda2.png';
-import './Profile.css';
 import { createProfile } from '../../services/profiles';
 import FadeIn from 'react-fade-in/lib/FadeIn';
 
 export default function CreateProfile() {
-  const { user, setUser } = useUser();
-  const { profile, setProfile, loading } = useProfile();
+  const { user } = useUser();
+  const { profile, setProfile } = useProfile();
   const history = useHistory();
   const [bear, setBear] = useState('');
   const [name, setName] = useState('');
@@ -34,6 +34,7 @@ export default function CreateProfile() {
     setProfile(response);
     history.replace('/profile/tasks');
   };
+
   return (
     <FadeIn transitionDuration="1000">
       <div className="create-container">

@@ -1,11 +1,11 @@
+import './Tasks.css';
 import { createTask, updateTask } from '../../services/tasks';
 import { useState } from 'react';
 import { useUser } from '../../context/UserContext';
-import TaskCard from '../../components/TaskCard/TaskCard';
 import { v4 as uuid } from 'uuid';
-import './Tasks.css';
 import { useHistory } from 'react-router-dom';
 import { useTasks } from '../../context/TaskContext';
+import TaskCard from '../../components/TaskCard/TaskCard';
 import FadeIn from 'react-fade-in/lib/FadeIn';
 
 export default function TaskSelector() {
@@ -15,9 +15,9 @@ export default function TaskSelector() {
   const [newTask, setNewTask] = useState('');
   const [newTaskDesc, setNewTaskDesc] = useState('');
   const [isSelected, setIsSelected] = useState({});
-  const history = useHistory();
   const [isExpanded, setIsExpanded] = useState(false);
   const [habitsLeft, setHabitsLeft] = useState(5);
+  const history = useHistory();
 
   const handleHabitsLeft = () => {
     setHabitsLeft((prevState) => prevState - 1);
@@ -39,7 +39,7 @@ export default function TaskSelector() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const task = await createTask(newTask, newTaskDesc);
+    const task = await createTask(newTask, newTaskDesc, user.id);
     setTaskList((prevState) => [...prevState, task[0]]);
     setNewTask('');
     setNewTaskDesc('');

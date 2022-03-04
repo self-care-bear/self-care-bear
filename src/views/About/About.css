@@ -1,4 +1,4 @@
-.about {
+.about-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -10,7 +10,7 @@
   margin-top: 30px;
 }
 
-.bio-card {
+.bio-container_card {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -31,11 +31,11 @@
   height: 30px;
 }
 
-.about h1 {
+.about-container h1 {
   text-align: center;
 }
 
-.desc-container {
+.about-container_desc {
   display: flex;
   margin: auto;
   justify-content: center;
@@ -43,7 +43,7 @@
   width: 50vw;
 }
 
-.bio-card p {
+.bio-container_card p {
   text-align: center;
   padding: 10px;
 }

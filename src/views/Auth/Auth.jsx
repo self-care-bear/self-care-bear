@@ -34,6 +34,7 @@ export default function Auth({ isSigningUp = false }) {
       throw new Error(err);
     }
   };
+
   return (
     <FadeIn transitionDuration="1000">
       <div className="auth-container">

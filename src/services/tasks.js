@@ -14,16 +14,17 @@ export async function getCreatedTasks(user_id) {
   return parseData(request);
 }
 
-export async function createTask(task, task_description) {
+export async function createTask(task, task_description, user_id) {
   const request = await client.from('created_tasks').insert([
     {
       task: task,
       task_description: task_description,
-      user_id: client.auth.user().id,
+      user_id: user_id,
     },
   ]);
   return parseData(request);
 }
+
 export async function updateTask(
   id,
   task,
@@ -61,21 +62,3 @@ export async function getCompletedTasks(user_id) {
     .order('created_at', { ascending: false });
   return parseData(request);
 }
-
-// export async function resetCompletedTasks(user_id) {
-//   const request = await client
-//     .from('created_tasks')
-//     .update({ task, task_description, is_selected, is_completed })
-//     .match({ user_id, is_completed: true })
-//     .order('created_at', { ascending: false });
-//   return parseData(request);
-// }
-
-// export async function resetSelectedTasks(user_id) {
-//   const request = await client
-//     .from('created_tasks')
-//     .update({ task, task_description, is_selected, is_completed })
-//     .match({ user_id, is_selected: true })
-//     .order('created_at', { ascending: false });
-//   return parseData(request);
-// }
