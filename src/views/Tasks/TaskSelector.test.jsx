@@ -45,7 +45,6 @@ const server = setupServer(
   rest.post(
     'https://qtcmkfsjelfhlmlkamgh.supabase.co/rest/v1/created_tasks',
     (req, res, ctx) => {
-      console.log('REQ', req.body);
       return res(
         ctx.json([
           {
@@ -67,7 +66,7 @@ beforeAll(() => server.listen());
 
 afterAll(() => server.close());
 
-test('users do stuff', async () => {
+test('adding a task renders it to the task list', async () => {
   render(
     <UserProvider mockUser={{ id: 1, email: 'email@email.com' }}>
       <TaskProvider>
@@ -78,15 +77,11 @@ test('users do stuff', async () => {
     </UserProvider>
   );
 
-  const taskname = await screen.findByRole('heading', {
-    name: /hi/i,
-  });
-
   const create = screen.getByRole('button', {
     name: /create habit/i,
   });
 
-  const taskName = screen.getByRole('textbox', {
+  const newTaskName = screen.getByRole('textbox', {
     name: /habit:/i,
   });
 
@@ -94,11 +89,13 @@ test('users do stuff', async () => {
     name: /description:/i,
   });
 
-  userEvent.type(taskName, 'task');
+  userEvent.type(newTaskName, 'task');
   userEvent.type(taskDesc, 'desc');
   userEvent.click(create);
 
   const newTask = await screen.findByRole('heading', {
     name: /task/i,
   });
+
+  expect(newTask).toBeInTheDocument();
 });

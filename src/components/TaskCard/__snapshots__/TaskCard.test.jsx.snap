@@ -16,6 +16,7 @@ exports[`taskcard renders 1`] = `
       </button>
     </div>
     <p
+      aria-label="expand undefined"
       class="arrow"
     >
       ▼
