@@ -6,6 +6,10 @@ import { v4 as uuid } from 'uuid';
 import { getSelectedTasks, updateTask } from '../../services/tasks';
 import { useHistory } from 'react-router-dom';
 import { useTasks } from '../../context/TaskContext';
+<<<<<<< HEAD
+=======
+
+>>>>>>> f6ac3cfdbbeb5889d884348d4f350c3d407def9c
 import { Link } from 'react-router-dom';
 import FadeIn from 'react-fade-in/lib/FadeIn';
 import brown1 from '../../assets/brown1.png';
