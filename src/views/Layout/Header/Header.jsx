@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import './Header.css';
 import logo from '../../../assets/logo.png';
+import FadeIn from 'react-fade-in/lib/FadeIn';
 
 export default function Header() {
   const history = useHistory();
@@ -15,21 +16,23 @@ export default function Header() {
   };
 
   return (
-    <header>
-      <section>
-        <Link to="/profile/tasks">Habits</Link>
-        <Link to="/profile">Profile</Link>
-      </section>
-      <section className="header-logo">
-        <img src={logo} />
-        <span>You're signed in as {user.email}</span>
-      </section>
-      <section>
-        <Link to="/about">About</Link>
-        <Link to="/" onClick={handleLogout}>
-          Log Out
-        </Link>
-      </section>
-    </header>
+    <FadeIn transitionDuration="1000">
+      <header>
+        <section>
+          <Link to="/profile/tasks">Habits</Link>
+          <Link to="/profile">Profile</Link>
+        </section>
+        <section className="header-logo">
+          <img src={logo} />
+          <span>You're signed in as {user.email}</span>
+        </section>
+        <section>
+          <Link to="/about">About</Link>
+          <Link to="/" onClick={handleLogout}>
+            Log Out
+          </Link>
+        </section>
+      </header>
+    </FadeIn>
   );
 }
