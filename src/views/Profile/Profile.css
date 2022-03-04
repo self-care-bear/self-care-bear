@@ -58,6 +58,13 @@
 
 .create-container img {
   width: 200px;
+  opacity: 0.9;
+  transition: 0.3s;
+}
+
+.create-container img:hover {
+  cursor: pointer;
+  opacity: 1;
 }
 
 .create-container p {
@@ -85,6 +92,7 @@
 
 input[type='radio']:checked + img {
   filter: drop-shadow(5px 5px 5px rgb(50, 52, 51));
+  opacity: 1;
 }
 
 .profile-container_list {
