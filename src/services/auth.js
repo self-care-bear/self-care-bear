@@ -11,7 +11,7 @@ export async function signUpUser(email, password) {
 
 export async function signInUser(email, password) {
   const request = await client.auth.signIn({ email, password });
-  return parseData(request);
+  return request;
 }
 
 export async function signOutUser() {
