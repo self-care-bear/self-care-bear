@@ -9,9 +9,12 @@ import FadeIn from 'react-fade-in/lib/FadeIn';
 export default function Header() {
   const history = useHistory();
   const { user, setUser } = useUser();
+  const { setTaskList } = useTasks();
+
   const handleLogout = () => {
     signOutUser();
     setUser({});
+    setTaskList([]);
     history.replace('/');
   };
 
