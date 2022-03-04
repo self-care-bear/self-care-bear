@@ -16,12 +16,16 @@ export default function Auth({ isSigningUp = false }) {
     try {
       if (isSigningUp) {
         const response = await signUpUser(email, password);
-        setError(response.error.message);
+        if (response.error) {
+          setError(response.error.message);
+        }
         setUser({ id: response.user.id, email: response.user.email });
         history.replace('/profile/tasks');
       } else {
         const response = await signInUser(email, password);
-        setError(response.error.message);
+        if (response.error) {
+          setError(response.error.message);
+        }
         setUser({ id: response.user.id, email: response.user.email });
         history.replace('/profile/tasks');
       }
