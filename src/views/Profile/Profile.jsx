@@ -66,11 +66,13 @@ export default function Profile() {
   return (
     <div className="profile-container">
       <section className="profile-container_desc">
-        <h1> Good morning!</h1>
-        Here are the habits you want to include in your day! Whenever you’re
-        ready, get started accomplishing them. As you go about your morning,
-        tick off your habits. And don’t forget! You’re taking care of your
-        buddy, too…
+        <h1> Good Morning!</h1>
+        <p>
+          Here are the habits you want to include in your day! Whenever you’re
+          ready, get started accomplishing them. As you go about your morning,
+          tick off your habits. And don’t forget! You’re taking care of your
+          buddy, too…
+        </p>
       </section>
       <section className="profile-container_list">
         {profile.task_list}

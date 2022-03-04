@@ -32,9 +32,7 @@
 }
 
 .about h1 {
-  color: #b7210d;
-  display: flex;
-  justify-content: center;
+  text-align: center;
 }
 
 .desc-container {

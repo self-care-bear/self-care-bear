@@ -11,11 +11,13 @@ export default function About() {
     <div className="about">
       <h1>About Us</h1>
       <div className="desc-container">
-        Meet the creators of Self Care Bear! A group of budding software
-        engineers who are passionate about self care. We recognize the
-        importance of spending time caring for ourselves so that we can care for
-        others and our code. We built this app with the goal of helping others
-        establish a morning routine. We hope you love it.
+        <p>
+          Meet the creators of Self Care Bear! A group of budding software
+          engineers who are passionate about self care. We recognize the
+          importance of spending time caring for ourselves so that we can care
+          for others and our code. We built this app with the goal of helping
+          others establish a morning routine. We hope you love it.
+        </p>
       </div>
       <div className="bio-container">
         <div className="bio-card">
