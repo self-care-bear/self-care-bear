@@ -81,8 +81,8 @@ export default function Profile() {
 
   console.log(selectedTasks);
   if (!loading && !profile.user_name) return <Redirect to="/profile/create" />;
-  if (!loading && selectedTasks.length === 0)
-    return <Redirect to="/profile/tasks" />;
+  // if (!loading && selectedTasks.length === 0)
+  //   return <Redirect to="/profile/tasks" />;
   return (
     <FadeIn transitionDuration="1000">
       <div className="profile-container">
