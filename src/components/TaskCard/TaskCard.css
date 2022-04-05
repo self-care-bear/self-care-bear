@@ -10,6 +10,10 @@
   height: auto;
 }
 
+.task-card.selected {
+  border: 2px solid #376d5f;
+}
+
 .task-card_title {
   margin: 1vh;
   font-weight: 500;

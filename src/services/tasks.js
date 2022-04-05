@@ -36,7 +36,8 @@ export async function updateTask(
   const request = await client
     .from('created_tasks')
     .update({ task, task_description, is_selected, is_completed })
-    .match({ id, user_id });
+    .match({ id, user_id })
+    .single();
   return parseData(request);
 }
 

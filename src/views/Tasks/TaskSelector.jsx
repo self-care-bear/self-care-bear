@@ -16,7 +16,6 @@ export default function TaskSelector() {
   const [newTaskDesc, setNewTaskDesc] = useState('');
   const [isSelected, setIsSelected] = useState({});
   const [isExpanded, setIsExpanded] = useState(false);
-  const [habitsLeft, setHabitsLeft] = useState(5);
   const history = useHistory();
 
   const handleHabitsLeft = () => {
@@ -40,7 +39,7 @@ export default function TaskSelector() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const task = await createTask(newTask, newTaskDesc, user.id);
-    setTaskList((prevState) => [...prevState, task[0]]);
+    setTaskList((prevState) => [...prevState, task[0]]); // avoid this [0] by using .single on your database call
     setNewTask('');
     setNewTaskDesc('');
   };
@@ -51,9 +50,25 @@ export default function TaskSelector() {
 
   if (loading) return <span>Loading...</span>;
 
-  if (Object.values(isSelected).filter((val) => val).length === 5) {
+  // this can now be derived from the task list
+  if (taskList.filter((task) => task.is_selected).length === 5) {
     history.push('/profile');
   }
+  // again - this is derived state -- you can just make a const
+  const habitsLeft = 5 - taskList.filter((task) => task.is_selected).length;
+
+  const handleSelect = async (task) => {
+    const resp = await updateTask(
+      task.id,
+      task.task,
+      task.task_description,
+      user.id,
+      true
+    );
+    setTaskList((prevState) =>
+      prevState.map((item) => (item.id === task.id ? resp : item))
+    );
+  };
 
   return (
     <FadeIn transitionDuration="1000">
@@ -140,9 +155,7 @@ export default function TaskSelector() {
                   key={uuid()}
                   onEdit={handleTaskEdit}
                   task={task}
-                  isSelected={isSelected}
-                  setIsSelected={setIsSelected}
-                  handleHabitsLeft={handleHabitsLeft}
+                  handleSelect={handleSelect}
                 />
               );
             })}

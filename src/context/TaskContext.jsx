@@ -11,12 +11,16 @@ const TaskProvider = ({ children }) => {
   const { user } = useUser();
 
   useEffect(() => {
-    const fetchCreatedData = async () => {
-      const createdData = await getCreatedTasks(user.id);
-      setTaskList((prevState) => [...prevState, ...createdData]);
-    };
-    fetchCreatedData();
-  }, []);
+    // you're getting an error on your initial load bc this useEffect
+    // is running without a user -- you can either move the provider
+    if (user.id) {
+      const fetchCreatedData = async () => {
+        const createdData = await getCreatedTasks(user.id);
+        setTaskList((prevState) => [...prevState, ...createdData]);
+      };
+      fetchCreatedData();
+    }
+  }, [user.id]);
 
   return <TaskContext.Provider value={value}>{children}</TaskContext.Provider>;
 };
