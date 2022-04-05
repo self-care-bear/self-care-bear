@@ -74,11 +74,11 @@ export default function About() {
             <img className="bio-img" src={libbi} alt="libbi headshot" />
             <p>
               Libbi is a detailed oriented critical thinking Software Developer.
-              I have a background in customer service and administration which
-              has given me the skills with team collaboration, problem solving,
-              communication, and leadership. My next Software Developer role
-              will allow me to use these tools. I am a passionate learner, who
-              enjoys learning new technical knowledge.
+              She has a background in customer service and administration which
+              has given her the skills of team collaboration, problem solving,
+              communication, and leadership. Her ideal Software Developer role
+              will allow her to use these tools. She is a passionate learner,
+              who enjoys learning new technical knowledge.
             </p>
           </div>
           <div className="bio-container_card">
